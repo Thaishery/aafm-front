@@ -1,4 +1,4 @@
-import './style.css'
+import './style.scss'
 import logo from '../../assets/img/logo_clean.webp'
 import instagramLogo from '../../assets/img/instagram_logo.webp'
 

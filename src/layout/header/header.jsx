@@ -3,7 +3,7 @@ import Logo from '../../assets/img/logo_clean.webp'
 import Burger from "../../componant/Navbar/burger"
 import NavDesktop from "../../componant/Navbar/nav-desktop"
 import Footer from "../../componant/footer/Footer"
-import './style.css'
+import './style.scss'
 
 const Header = () =>{ 
   const navElements = [{path:"/",link:"home"},{path:"/test",link:"test"}]
