@@ -6,7 +6,7 @@ import Footer from "../../componant/footer/Footer"
 import './style.scss'
 
 const Header = () =>{ 
-  const navElements = [{path:"/",link:"home"}]
+  const navElements = [{path:"/",link:"home"},{path:"/link1",link:"test1"},{path:"/link2",link:"test2"}]
   return (
     <>
     <div className="header">
