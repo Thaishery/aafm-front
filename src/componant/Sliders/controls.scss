@@ -1,0 +1,41 @@
+.-controls{
+  position: relative;
+  z-index: 2;
+  // background-color: pink;
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  grid-row: 100/100;
+}
+.slider-prev{
+grid-column: 1/1;
+grid-row: 1;
+min-height: 300px;
+position: absolute;
+bottom: 14px;
+}
+.slider-next{
+grid-column: 99/100;
+grid-row: 1;
+min-height: 300px;
+position: absolute;
+bottom: 14px;
+}
+.dots{
+  grid-column: 50/50;
+  position: relative;
+  bottom: 14px;
+  display:flex;
+  height: 21px;
+  button{
+    border-radius: 36px;
+    justify-content: space-around;
+    margin: 0 2px;
+    border: 1px solid black;
+    max-height: 14px;
+    background-color: transparent;
+    cursor: pointer;
+    &.active{
+      background-color: red;
+    }
+  }
+}

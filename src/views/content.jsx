@@ -1,7 +1,7 @@
 const Content = ()=>{
   return(
     <>
-      <p>Hello world</p>
+      <p>Hello world authenticated</p>
     </>
   )
 }

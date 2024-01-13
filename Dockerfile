@@ -4,11 +4,21 @@
 # npm run tests. 
 # npm run build. 
 # FROM nginx
-FROM node:alpine
+FROM alpine
 
-WORKDIR /var/www/aafm-front
-COPY ./ /var/www/aafm-front/
+RUN apk update \
+    && apk add bash nginx nodejs npm
 
-RUN npm i 
+WORKDIR /usr/aafm-front/
+COPY ./ /usr/aafm-front/
+RUN rm -rf dist/
+RUN rm -rf node_modules
+RUN npm i
+RUN npm run test -- -u
+RUN npm run test
+RUN npm run build
+RUN mv dist/ /var/www/
+# RUN nginx -g "daemon  off;"
 
-CMD ["npm run", "serve"]
+# CMD ["ash","-c",'nginx -g "daemon  off;"']
+CMD ["nginx","-c",'"daemon  off;"']

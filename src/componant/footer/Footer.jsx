@@ -1,6 +1,6 @@
 import './style.scss'
 import logo from '../../assets/img/logo_clean.webp'
-import instagramLogo from '../../assets/img/instagram_logo.webp'
+import instagramLogo from '../../assets/img/Instagram_logo.webp'
 
 const Footer = () =>{
   const links = [{path:"/",link:"home"},{path:"/test",link:"test"}]
