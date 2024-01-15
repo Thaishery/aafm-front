@@ -1,0 +1,26 @@
+.dualColList{
+  width: 85%;
+  margin: auto;
+  margin-bottom: 75px;
+  h2{
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  li{
+    width: 46%;
+    padding-left: 3%;
+    display: grid;
+    & a,span{
+      padding: 10px 20px 10px 0;
+      justify-self: start;
+      margin: auto 0;
+    }
+  }
+  li:nth-child(odd){
+    border-right: 2px solid black;
+  }
+}

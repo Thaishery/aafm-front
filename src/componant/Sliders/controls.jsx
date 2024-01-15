@@ -1,9 +1,7 @@
 import './controls.scss'
 import SliderDot from './sliderDot'
-const Controls = ({prev, next,slides,curent, setActive})=>{
-  // const setActive=()=>{
 
-  // }
+const Controls = ({prev, next,slides,curent, setActive})=>{
   return(
     <div className='-controls'>
       <button className='slider-prev' onClick={prev}>&lt;</button>

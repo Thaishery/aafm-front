@@ -1,4 +1,6 @@
+import SimpleText from "../componant/SimpleText/SimpleText"
 import Slider from "../componant/Sliders/slider"
+import DualColList from "../componant/dualColList/dualColList"
 
 const Home = ()=>{
   return(
@@ -32,6 +34,36 @@ const Home = ()=>{
           desc:"ma description"
         }
         ]}/>
+      <SimpleText 
+        articles={[
+          {
+            title:"mon titre",
+            parags:[
+              "ae",
+              "aze"
+            ]
+          }, {
+            title:"mon titre",
+            parags:[
+              "ae",
+              "aze"
+            ]
+          }
+        ]}
+      />
+      <DualColList title={"Activitées"} listItem={[
+        {
+          link:"http://gdeb.fr",
+          content:"no link "
+        },
+        {
+          content:"no link zzzzzzzzzzzzzzz no link zzzzzzzzzzzzzzz no link zzzzzzzzzzzzzzz no link zzzzzzzzzzzzzzz no link zzzzzzzzzzzzzzz no link zzzzzzzzzzzzzzz "
+        },
+        {
+          link:"http://gdeb.fr",
+          content:"link 2"
+        }
+      ]} />
     </>
   )
 }
