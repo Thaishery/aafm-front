@@ -10,6 +10,11 @@
     display: flex;
     flex-wrap: wrap;
   }
+  a{
+    color: black;
+    text-decoration-color: red;
+    text-underline-offset: 8px;
+  }
   li{
     width: 46%;
     padding-left: 3%;

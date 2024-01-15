@@ -3,7 +3,7 @@ import "./simpleText.scss"
 
 const SimpleText = ({articles}) =>{
   return (
-    <div className='articles'>
+    <div className='simpleText'>
       {articles && 
         articles.map((article,key) =>{
           return (
