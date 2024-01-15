@@ -18,11 +18,12 @@ const Header = () =>{
       </div>
       <Burger navElements={navElements}/>
       <div className="nav-desktop-filler"></div>
+      <hr className="nav-desktop-line"></hr>
+      <div className="nav-container-desktop">
+          <NavDesktop navElements={navElements}/>
+      </div>
     </div>
-    <hr className="nav-desktop-line"></hr>
-    <div className="nav-container-desktop">
-        <NavDesktop navElements={navElements}/>
-    </div>
+
     <Outlet />
     <Footer />
     </>
