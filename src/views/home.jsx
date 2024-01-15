@@ -9,7 +9,7 @@ const Home = ()=>{
       
       <Slider slides={[
         {
-          src:"https://picsum.photos/id/1/1600/300",
+          src:"https://picsum.photos/id/1/1000/300",
           alt:"alt img1",
           havecaptions:false
         },
