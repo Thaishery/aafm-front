@@ -4,8 +4,8 @@
   // background-color: pink;
   // max-width: 90%;
   display: grid;
-  grid-template-columns: repeat(100, 1fr);
-  grid-row: 100/100;
+  grid-template-columns: repeat(1000, 1fr);
+  grid-row: 1000/1000;
 }
 .slider-prev{
 grid-column: 1/1;
@@ -15,14 +15,14 @@ position: absolute;
 bottom: 14px;
 }
 .slider-next{
-grid-column: 99/100;
+grid-column: 1000;
 grid-row: 1;
 min-height: 300px;
 position: absolute;
 bottom: 14px;
 }
 .dots{
-  grid-column: 50/50;
+  grid-column: 500/500;
   position: relative;
   bottom: 14px;
   display:flex;
