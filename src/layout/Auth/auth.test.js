@@ -15,7 +15,7 @@ afterEach(() => {
   container = null;
 });
 
-describe( "Lyaout " ,()=>
+describe( "Layout " ,()=>
   it('Layout contain Good messages when logged in : ', () => {
     act(() => {
       ReactDOM.createRoot(container).render(<AuthLayout />);

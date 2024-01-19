@@ -9,7 +9,8 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -45,6 +46,16 @@
     },
     "setupFilesAfterEnv": [
       "<rootDir>/setupTests.js"
+    ],
+    "moduleFileExtensions": ["ts", "js","jsx", "json"],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.jsx",
+      "!<rootDir>/src/**/*.interface.jsx",
+      "!<rootDir>/src/**/*.mock.jsx",
+      "!<rootDir>/src/**/*.module.jsx",
+      "!<rootDir>/src/**/*.spec.jsx",
+      "!<rootDir>/src/**/*.test.jsx",
+      "!<rootDir>/src/**/*.d.jsx"
     ]
   }
 }
