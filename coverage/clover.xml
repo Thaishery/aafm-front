@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1705663661075" clover="3.2.0">
-  <project timestamp="1705663661075" name="All files">
-    <metrics statements="62" coveredstatements="20" conditionals="60" coveredconditionals="8" methods="35" coveredmethods="8" elements="157" coveredelements="36" complexity="0" loc="62" ncloc="62" packages="10" files="17" classes="17"/>
+<coverage generated="1705673341708" clover="3.2.0">
+  <project timestamp="1705673341708" name="All files">
+    <metrics statements="58" coveredstatements="20" conditionals="44" coveredconditionals="8" methods="32" coveredmethods="8" elements="134" coveredelements="36" complexity="0" loc="58" ncloc="58" packages="9" files="16" classes="16"/>
     <package name="src">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.jsx" path="E:\xampp3\htdocs\aafm\code\aafm-front\src\App.jsx">
@@ -11,16 +11,6 @@
       <file name="main.jsx" path="E:\xampp3\htdocs\aafm\code\aafm-front\src\main.jsx">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.componant.Articles">
-      <metrics statements="4" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="Articles.jsx" path="E:\xampp3\htdocs\aafm\code\aafm-front\src\componant\Articles\Articles.jsx">
-        <metrics statements="4" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.componant.Navbar">
