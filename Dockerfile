@@ -21,4 +21,5 @@ RUN mv dist/ /var/www/
 # RUN nginx -g "daemon  off;"
 
 # CMD ["ash","-c",'nginx -g "daemon  off;"']
-CMD ["nginx","-c",'"daemon  off;"']
+# CMD ["nginx","-g",'"daemon  off;"']
+ENTRYPOINT nginx -g 'daemon off;' 
