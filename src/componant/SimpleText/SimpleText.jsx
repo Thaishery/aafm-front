@@ -11,12 +11,23 @@ const SimpleText = ({articles}) =>{
             {article.title &&
               <h2>{article.title}</h2>
             }
-            {article.parags &&
+            {article.content &&
               <article>
-                {article.parags.map((parag,key)=>{
-                  return(<Fragment key={key}>
-                    <p>{parag}</p>
-                  </Fragment>)
+                {article.content.map((content,key)=>{
+                  switch (content.type) {
+                    case 'parag':
+                      return(
+                        <Fragment key={key}>
+                          <p>{content.value}</p>
+                        </Fragment>)  
+                    case 'link':
+                      return (
+                        <Fragment key={key}>
+                          <a href={content.link}>{content.value}</a>
+                        </Fragment>)
+                    default:
+                      break;
+                  }
                 })}
               </article>
             }

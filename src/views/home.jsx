@@ -39,15 +39,32 @@ const Home = ()=>{
         articles={[
           {
             title:"mon titre",
-            parags:[
-              "ae",
-              "aze"
+            content:[
+              {
+                type:"parag",
+                value:"ae"
+              },
+              {
+                type:"link",
+                link:"http://gdeb.fr",
+                value:"gdeb.fr"
+              },
+              {
+                type:"parag",
+                value:"ae"
+              }
             ]
           }, {
             title:"mon titre",
-            parags:[
-              "ae",
-              "aze"
+            content:[
+              {
+                type:"parag",
+                value:"ae"
+              },
+              {
+                type:"parag",
+                value:"ae"
+              }
             ]
           }
         ]}
