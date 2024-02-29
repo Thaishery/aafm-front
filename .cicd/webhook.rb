@@ -14,9 +14,7 @@ post '/' do
     # system('/usr/aafm-front/.cicd/pull.sh')
     # build app
     # system('/usr/aafm-front/.cicd/build.sh')
-
-    # Répondre avec un code de statut approprié ou un message de succès si nécessaire
-    status 200
-    body "Webhook traité avec succès sur, #{ENVIR}"
   end
+  status 200
+  body "Webhook traité avec succès sur, #{ENVIR}"
 end
