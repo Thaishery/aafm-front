@@ -26,7 +26,7 @@ RUN ngrok authtoken 2d2tYywVfCAEuGTDoAnG3ymWCt2_7P6AyD2FE9d3QTA764Xad
 
 RUN gem install sinatra
 RUN gem install rackup
-RUN gem install json
+# RUN gem install json
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
