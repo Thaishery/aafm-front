@@ -15,17 +15,17 @@ post '/' do
     pull_output = f.readlines
     f.close
     
-    f = IO.popen("/tmp/.cicd/build.sh")
-    p f.readlines
-    f.close
+    # f = IO.popen("/tmp/.cicd/build.sh")
+    # p f.readlines
+    # f.close
 
-    # if pull_output.any? { |line| line.include?("Updating") }
-    #   f = IO.popen("/tmp/.cicd/build.sh")
-    #   p f.readlines
-    #   f.close
-    # else
-    #   puts "deja a jour, skiping."
-    # end
+    if pull_output.any? { |line| line.include?("Updating") }
+      f = IO.popen("/tmp/.cicd/build.sh")
+      p f.readlines
+      f.close
+    else
+      puts "deja a jour, skiping."
+    end
   end
   status 200
   body "Webhook traité avec succès sur, #{ENVIR}"
