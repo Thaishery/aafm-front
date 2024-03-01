@@ -13,6 +13,8 @@ function App() {
       <Routes>
         <Route element={<Header />}>
           <Route path='/' element={<Home />} />
+          <Route path='/test' element={<Home />} />
+
           {/* Routes authentifier :  */}
           <Route element={<AuthLayout />}>
             <Route path='content' element={<Content />} />
