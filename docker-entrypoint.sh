@@ -47,5 +47,5 @@ listen(){
 }
 
 # gitsetup
-# build
+build
 listen
