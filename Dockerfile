@@ -1,7 +1,7 @@
 FROM alpine
 
 #set build args : 
-ARG HOME_DIR
+# ARG HOME_DIR
 ARG NGROK
 
 RUN apk update \
