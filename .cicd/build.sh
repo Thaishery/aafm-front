@@ -1,6 +1,6 @@
 echo "build task started. this will take a while." 
 cp -r /usr/aafm-front /usr/aafm-front-build
-
+chmod -r 777 /usr/aafm-front-build
 cd /usr/aafm-front-build
 
 rm -rf dist/
