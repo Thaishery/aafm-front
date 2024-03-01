@@ -11,7 +11,7 @@ post '/' do
   @payload = JSON.parse(params[:payload])
   if @payload["ref"] == "refs/heads/#{ENVIR}"
     # pull code : 
-    # system('/usr/aafm-front/.cicd/pull.sh')
+    system('/usr/aafm-front/.cicd/pull.sh')
     # build app :
     # system('/usr/aafm-front/.cicd/build.sh')
   end
