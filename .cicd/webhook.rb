@@ -10,9 +10,9 @@ ENVIR = ENV["ENVIRONMENT"]
 post '/' do
   @payload = JSON.parse(params[:payload])
   if @payload["ref"] == "refs/heads/#{ENVIR}"
-    #pull code : 
+    # pull code : 
     # system('/usr/aafm-front/.cicd/pull.sh')
-    # build app
+    # build app :
     # system('/usr/aafm-front/.cicd/build.sh')
   end
   status 200
