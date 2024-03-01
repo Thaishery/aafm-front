@@ -36,6 +36,7 @@ cd /usr
 git clone git@github.com:Thaishery/aafm-front.git
 
 cp -r /usr/aafm-front/.cicd/ /tmp/.cicd/
+chmod -R 777 /tmp/.cicd/
 
 build(){
   . /tmp/.cicd/build.sh
