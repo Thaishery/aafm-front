@@ -1,2 +1,3 @@
-cd $project_dir
-git pull origin $ENVIRONMENT
+cd /usr/aafm-front
+git checkout $ENVIRONMENT
+git pull

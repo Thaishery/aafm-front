@@ -11,9 +11,16 @@ post '/' do
   @payload = JSON.parse(params[:payload])
   if @payload["ref"] == "refs/heads/#{ENVIR}"
     # pull code : 
-    system('/usr/aafm-front/.cicd/pull.sh')
-    # build app :
-    # system('/usr/aafm-front/.cicd/build.sh')
+    f = IO.popen("/usr/aafm-front/.cicd/pull.sh")
+    pull_output = f.readlines
+    f.close
+    if pull_output.any? { |line| line.include?("Updating") }
+      f = IO.popen("/usr/aafm-front/.cicd/build.sh")
+      p f.readlines
+      f.close
+    else
+      puts "deja a jour, skiping."
+    end
   end
   status 200
   body "Webhook traité avec succès sur, #{ENVIR}"

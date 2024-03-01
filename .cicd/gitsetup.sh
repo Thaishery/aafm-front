@@ -7,7 +7,7 @@ chmod -R 700 $HOME_DIR
 # Setup Git Config
 echo "Setting Git Config Values"
 git config --global user.email "gdeb@gdeb.fr" && \
-git config --global user.name "Docker Image"
+git config --global user.name "Thaishery"
 
 # Setup Git Folders
 echo "Adding Host Key for Github"
@@ -19,4 +19,6 @@ cd $HOME_DIR \
 echo "Adding SSH Key to ssh-agent" \
   && eval `ssh-agent -s` && ssh-add $HOME_DIR/.ssh/id_rsa
 
-ssh -T git@github.com
+touch ~/.ssh/config \
+  && echo "Host $HOST_INFO" >> ~/.ssh/config \
+  && echo "   ForwardAgent yes" >> ~/.ssh/config
