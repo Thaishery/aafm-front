@@ -6,16 +6,18 @@ webhook_port=8089
 # Répertoire du projet
 project_dir="/usr/aafm-front"
 
+cp -r /usr/aafm-front/.cicd/ /tmp/.cicd/
+
 gitsetup(){
-  . /usr/aafm-front/.cicd/gitsetup.sh
+  . /tmp/.cicd/gitsetup.sh
 }
 
 build(){
-  . /usr/aafm-front/.cicd/build.sh
+  . /tmp/.cicd/build.sh
 }
 
 listen(){
-  . /usr/aafm-front/.cicd/listen.sh
+  . /tmp/.cicd/listen.sh
 }
 
 gitsetup
