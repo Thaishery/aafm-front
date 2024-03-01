@@ -20,5 +20,6 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 #set env var: 
 ENV ENVIRONMENT $ENVIRONMENT
 ENV HOME_DIR $HOME_DIR
+ENV NGROK_FRONT_URL $NGROK_FRONT_URL
 
 ENTRYPOINT ["docker-entrypoint.sh"]
