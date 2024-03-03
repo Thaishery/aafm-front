@@ -34,6 +34,7 @@ touch ~/.ssh/config \
 
 cd /usr
 git clone git@github.com:Thaishery/aafm-front.git
+cd aafm-front
 git checkout $ENVIRONMENT
 
 cp -r /usr/aafm-front/.cicd/ /tmp/.cicd/
