@@ -8,6 +8,8 @@ ENVIR = ENV["ENVIRONMENT"]
 
 # Définition d'une route
 post '/' do
+  status 200
+  body "Webhook recu avec succès sur, #{ENVIR}"
   @payload = JSON.parse(params[:payload])
   if @payload["ref"] == "refs/heads/#{ENVIR}"
     # pull code : 
