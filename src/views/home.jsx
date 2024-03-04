@@ -3,17 +3,46 @@ import Articles from "../componant/Articles/Articles"
 import SimpleText from "../componant/SimpleText/SimpleText"
 import Slider from "../componant/Sliders/slider"
 import DualColList from "../componant/dualColList/dualColList"
-// const axios = require('axios');
+import urls from "../constants/urls";
+import axios from 'axios';
 
 const Home = ()=>{
-//   const [content,setContent] = useState({})
-//   useEffect(()=>{
-    
-//   },[])
+  const [modules,setModules] = useState([])
+  useEffect(()=>{
+    axios({
+      url:`${urls.apiUrl}/api/public/get_home_content`,
+      method: 'GET',
+    }).then((res)=>{
+      console.log(res)
+      if(res?.data?.content?.content?.modules){
+        setModules(res?.data?.content?.content?.modules)
+      }
+    })
+  },[])
   return(
     <>
+      {
+        modules && 
+        modules.map((mod,key)=>{
+          switch(mod.type){
+            case 'simpleText': 
+              return <SimpleText 
+                key={key}  
+                articles={mod.module_content}
+              />
+            break
+            case 'slider':
+              return <Slider
+              key={key}
+              slides={mod.module_content}
+              />
+            break
+
+          }
+        })
+      }
       
-      <Slider slides={[
+      {/* <Slider slides={[
         {
           src:"https://picsum.photos/id/1/1000/300",
           alt:"alt img1",
@@ -121,7 +150,7 @@ const Home = ()=>{
             cta:"Mon lien"
           }
         }
-      ]}/>
+      ]}/> */}
     </>
   )
 }
