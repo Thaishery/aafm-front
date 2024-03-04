@@ -1,9 +1,15 @@
+import { useEffect, useState } from "react";
 import Articles from "../componant/Articles/Articles"
 import SimpleText from "../componant/SimpleText/SimpleText"
 import Slider from "../componant/Sliders/slider"
 import DualColList from "../componant/dualColList/dualColList"
+// const axios = require('axios');
 
 const Home = ()=>{
+//   const [content,setContent] = useState({})
+//   useEffect(()=>{
+    
+//   },[])
   return(
     <>
       

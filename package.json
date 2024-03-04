@@ -15,7 +15,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-    "axios": "^1.3.4",
+    "axios": "^1.6.7",
     "jest-environment-jsdom": "^29.5.0",
     "jest-svg-transformer": "^1.0.0",
     "react": "^18.2.0",
@@ -47,7 +47,12 @@
     "setupFilesAfterEnv": [
       "<rootDir>/setupTests.js"
     ],
-    "moduleFileExtensions": ["ts", "js","jsx", "json"],
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "jsx",
+      "json"
+    ],
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.jsx",
       "!<rootDir>/src/**/*.interface.jsx",
