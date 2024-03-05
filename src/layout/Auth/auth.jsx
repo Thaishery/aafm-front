@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
 import { Navigate, Outlet } from "react-router-dom"
 
-const AuthLayout = () =>{
-  const [userIsLoggedIn, setUserIsLoggedIn] = useState(true)
+const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
+  // const [userIsLoggedIn, setUserIsLoggedIn] = useState(true)
   
   //? test change function : 
   const onChange = ()=>{
-    setUserIsLoggedIn(false)
+    setUserIsLoggedIn(!userIsLoggedIn)
   }
 
   return(
     <>
-      <input type="checkbox" onChange={onChange}/>changeStateTrigger<input/>
+      <input type="checkbox" checked={userIsLoggedIn} onChange={onChange}/> changeStateTrigger
     {!userIsLoggedIn &&
     <>
       <span className="false">should have navigate</span>

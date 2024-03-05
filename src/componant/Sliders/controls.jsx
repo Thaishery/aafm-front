@@ -8,7 +8,7 @@ const Controls = ({prev, next,slides,curent, setActive})=>{
       <button className="slider-next" onClick={next}>&gt;</button>
       <ul className='dots'>
         {slides&&
-          slides.map((dot,key)=><SliderDot setActive={setActive(key)} curent={curent} id={key} />)
+          slides.map((dot,key)=><SliderDot key={key} setActive={setActive(key)} curent={curent} id={key} />)
         }
       </ul>
     </div>
