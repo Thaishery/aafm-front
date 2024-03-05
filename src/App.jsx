@@ -28,27 +28,4 @@ const App = () => {
   );
 };
 
-// function App() {
-//   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
-//   useEffect(()=>{
-//     localStorage()
-//   },[])
-//   console.log(userIsLoggedIn);
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route element={<Header />}>
-//           <Route path='/' element={<Home userIsLoggedIn={userIsLoggedIn} />} />
-//           {/* <Route path='/googleauth' element={<GoogleAuth />}/> */}
-//           {/* Routes authentifier :  */}
-//           <Route path="/auth" element={<AuthLayout userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} />}>
-//             <Route path='content' element={<Content />} />
-//           </Route>
-//           {/* fin des routes auth...  */}
-//         </Route>
-//       </Routes>
-//     </BrowserRouter>
-//   )
-// }
-
 export default App

@@ -15,12 +15,14 @@ const GoogleAuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
       if(res.data.token == undefined) window.location.replace('/');
       localStorage.setItem('token', JSON.stringify(res.data.token))
       setUserIsLoggedIn(true)
-      window.location.replace('/');
     })
   },[])
 
   return(
     <>
+      {userIsLoggedIn &&
+        <Navigate to={"/"} />
+      }
       <Outlet/>
     </>
   )
