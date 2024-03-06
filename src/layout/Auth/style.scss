@@ -6,7 +6,6 @@
   margin-bottom: 20px;
   .form_select{
     display: flex;
-    // background-color: red;
     background-color: none;
     justify-content: center;
     .form_select_button{
@@ -28,10 +27,7 @@
 }
 
 .form{
-  // display: flex;
   padding: 30px;
-  // justify-content: space-around;
-  // flex-wrap: wrap;
   margin: auto;
   border: 1px solid black;
   border-radius: 16px;
@@ -102,7 +98,6 @@
     display: inline-block;
     vertical-align: middle;
     word-wrap: break-word;
-    // max-width: 90px;
     padding-left: 42px;
     padding-right: 42px;
     font-size: 14px;
