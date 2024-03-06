@@ -109,7 +109,7 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
   }
 
   const handleLoginPasswordChange = (e)=>{
-    setRegisterPassword(e.target.value)
+    setLoginPassword(e.target.value)
   }
 
   const handleRegisterPasswordChange = (e)=>{
