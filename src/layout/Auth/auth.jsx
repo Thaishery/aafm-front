@@ -195,7 +195,7 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
       }
       <div class="google_btn_container">
         <a href={`https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${googleId}&scope=email profile&access_type=offline&redirect_uri=${googleRedirect}`}>
-          <div class="customGPlusSignIn"><span class="icon"></span> <span class="buttonText">Google</span></div>
+          <div class="customGPlusSignIn"><span class="icon"></span> <span class="buttonText">Se connecter<br/> via Google</span></div>
         </a>
       </div>
     </div>
