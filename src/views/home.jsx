@@ -8,8 +8,7 @@ import axios from 'axios';
 
 const Home = ({userIsLoggedIn})=>{
   const [modules,setModules] = useState([])
-  const googleId = "436223154606-lq7257b6v49dvkjnvir7pirrm4k9lmjb.apps.googleusercontent.com"
-  const googleRedirect = "http://localhost:8000/api/users/external/login"
+
   console.log(userIsLoggedIn);
   // const googleSecret = 
   useEffect(()=>{
@@ -30,8 +29,7 @@ const Home = ({userIsLoggedIn})=>{
       logedIn
       </>
     }
-    login with google : 
-    <a href={`https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${googleId}&scope=email profile&access_type=offline&redirect_uri=${googleRedirect}`}>login with google.</a>
+    
       {
         modules && 
         modules.map((mod,key)=>{

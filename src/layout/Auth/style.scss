@@ -1,0 +1,111 @@
+.login_container{
+  width: 80%;
+  margin: auto;
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .form_select{
+    display: flex;
+    // background-color: red;
+    background-color: none;
+    justify-content: center;
+    .form_select_button{
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      width: 50%;
+      border-left: 1px solid red;
+      line-height: 50px;
+      &:hover{
+        box-shadow: 0 0 6px rgb(0, 0, 0);
+      }
+    }
+    .--activ{
+      text-decoration:underline red;
+      text-underline-offset: 10px;
+    }
+  }
+}
+
+.form{
+  // display: flex;
+  padding: 30px;
+  // justify-content: space-around;
+  // flex-wrap: wrap;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 16px;
+  width: 60%;
+  .input{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    border:2px solid transparent;
+    border-radius: 5px;
+    label{
+      display: inline-block;
+      width: 25%;
+    }
+    input{
+      width: 70%;
+    }
+    .error_message{
+      padding-left: 25%;
+      padding-bottom: 5px;
+    }
+  }
+  .submit_button_container{
+    width: 100%;
+  }
+  .submit_button{
+    display: block;
+    margin: auto;
+    width: 50%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: 20px;
+    background-color: transparent;
+    border-radius: 16px;
+    border: 2px solid black;
+    &:hover{
+      cursor: pointer;
+      border: 2px solid red;
+    }
+  }
+
+  .input--error{
+    border-color: red;
+  }
+}
+.google_btn_container{
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  .customGPlusSignIn{
+    display: inline-block;
+    background: white;
+    color: #444;
+    width: 190px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+    span.icon {
+      background: url(/public/g-normal.png) transparent 5px 50% no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 42px;
+      height: 42px;
+    }
+  span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 42px;
+    padding-right: 42px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+}
