@@ -4,7 +4,7 @@ import axios from "axios";
 import urls from "../../constants/urls"
 import "./style.scss"
 
-const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
+const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
   const [form, setForm] = useState('login');
 
   const [loginEmail, setLoginEmail] = useState('')
@@ -44,15 +44,18 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
       username:loginEmail,
       password:loginPassword
     }
+    console.log("trig axios handleLoginSubmit auth.jsx")
     axios({
-      url:`${urls.apiUrl}/api/users/internal/login`,
+      url:`${urls.apiUrl}/api/users/internal/validateToken`,
       method: 'POST',
       data:body,
       headers:{'Content-Type':'application/json'}
     })
     .then((res)=>{
       if(res?.data?.token !==""|null){
-        localStorage.setItem('token', JSON.stringify(res.data.token))
+        setToken(res.data.token)
+        localStorage.setItem('trigger1',res.data.token)
+        localStorage.setItem('token', res.data.token)
         setUserIsLoggedIn(true)
       }
     })
@@ -65,6 +68,7 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
       password:registerPassword,
       passwordVerif:registerPasswordConfirm
     }
+    console.log("trig axios handleRegisterSubmit auth.jsx")
     axios({
       url:`${urls.apiUrl}/api/users/internal/register`,
       method: 'POST',
@@ -74,7 +78,9 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
     .then((res)=>{
       console.log(res)
       if(res?.data?.token !==""|null){
-        localStorage.setItem('token', JSON.stringify(res.data.token))
+        setToken(res.data.token)
+        localStorage.setItem('trigger2',res.data.token)
+        localStorage.setItem('token', res.data.token)
         setUserIsLoggedIn(true)
       }
     })
@@ -193,26 +199,13 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn}) =>{
           </div>
         </form>
       }
-      <div class="google_btn_container">
+      <div className="google_btn_container">
         <a href={`https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${googleId}&scope=email profile&access_type=offline&redirect_uri=${googleRedirect}`}>
-          <div class="customGPlusSignIn"><span class="icon"></span> <span class="buttonText">Se connecter<br/> via Google</span></div>
+          <div className="customGPlusSignIn"><span className="icon"></span> <span className="buttonText">Se connecter<br/> via Google</span></div>
         </a>
       </div>
     </div>
     </>
-
-
-    // <>
-    //   <input type="checkbox" checked={userIsLoggedIn} onChange={onChange}/> changeStateTrigger
-    // {!userIsLoggedIn &&
-    // <>
-    //   <span className="false">should have navigate</span>
-    //   {/* <Navigate to="/" replace={true} /> */}
-    // </>
-    // }
-    //   <span className="true">logique d'authentification</span> 
-    //   <Outlet/>
-    // </>
   )
 }
 export default AuthLayout

@@ -6,21 +6,21 @@ import DualColList from "../componant/dualColList/dualColList"
 import urls from "../constants/urls";
 import axios from 'axios';
 
-const Home = ({userIsLoggedIn})=>{
+const Home = ({userIsLoggedIn,token})=>{
+  // const [modules,setModules] = useState(localStorage.getItem('homeContent')?JSON.parse(localStorage.getItem('homeContent')):[])
   const [modules,setModules] = useState([])
-
-  console.log(userIsLoggedIn);
-  // const googleSecret = 
   useEffect(()=>{
-    axios({
-      url:`${urls.apiUrl}/api/public/pages/get_home_content`,
-      method: 'GET',
-    }).then((res)=>{
-      console.log(res)
-      if(res?.data?.content?.content?.modules){
-        setModules(res?.data?.content?.content?.modules)
-      }
-    })
+    console.log("trig axios home.jsx")
+    // axios({
+    //   url:`${urls.apiUrl}/api/public/pages/get_home_content`,
+    //   method: 'GET',
+    // }).then((res)=>{
+    //   console.log(res)
+    //   if(res?.data?.content?.content?.modules){
+    //     // localStorage.setItem('homeContent',JSON.stringify(res?.data?.content?.content?.modules))
+    //     setModules(res?.data?.content?.content?.modules)
+    //   }
+    // })
   },[])
   return(
     <>
@@ -28,6 +28,11 @@ const Home = ({userIsLoggedIn})=>{
       <>
       logedIn
       </>
+    }
+    {token &&
+    <>
+    {token}
+    </>
     }
     
       {

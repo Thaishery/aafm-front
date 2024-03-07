@@ -7,7 +7,7 @@ import Slide from "./slide"
 const Slider = ({slides})=>{
   const [activeSlide,setActiveSlide] = useState(0)
   const handelPrevious = ()=>{
-    if(activeSlide -1 < 1) setActiveSlide(slides.length -1);
+    if(activeSlide -1 < 0) setActiveSlide(slides.length -1);
     else setActiveSlide(activeSlide -1 )
   }
   const handelNext = ()=>{

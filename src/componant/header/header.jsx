@@ -4,11 +4,10 @@ import Burger from "../../componant/Navbar/burger"
 import NavDesktop from "../../componant/Navbar/nav-desktop"
 import Footer from "../../componant/footer/Footer"
 import './style.scss'
+import { useEffect, useState } from "react"
 
-const Header = () =>{ 
-  const navElements = [{path:"/",link:"home"},{path:"/link2",link:"test2"},{path:"/auth",link:"Espace membre"}]
+const Header = ({navElements}) =>{ 
   return (
-    <>
     <div className="header">
       <div className="img-container">
         <img src={Logo} alt="Logo de l'aafm" className="logo-img"/>
@@ -23,10 +22,6 @@ const Header = () =>{
           <NavDesktop navElements={navElements}/>
       </div>
     </div>
-
-    <Outlet />
-    <Footer />
-    </>
   )
 }
 export default Header
