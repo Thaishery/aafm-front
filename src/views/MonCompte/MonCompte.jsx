@@ -166,7 +166,7 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
                 Afin de demander l'adhesion, merci d'êcrire dans la zone suivantes toutes les informations permetant de vous ratacher a un payement.<br/>
                 Attention, une fois cele-ci envoyer, elle ne sera plus modifiable. 
               </p>
-              <textarea className="textarea__fullsize" onChange={(e)=>{handleDemandeCommentaire(e)}}>{demandeAdhesion.commentaire}</textarea><br/>
+              <textarea className="textarea__fullsize" value={demandeAdhesion.commentaire} onChange={(e)=>{handleDemandeCommentaire(e)}}></textarea><br/>
               <button className="submit_button" type="submit" >Demander l'adhesion</button>
               <br />
             </form>
