@@ -1,0 +1,8 @@
+.main_container{
+  margin-top: 20px;
+  // background-color: red;
+  @media (min-width: 1133px) {
+    min-height:calc(100vh - 330px - 135px);
+  }
+  min-height:calc(100vh - 330px - 79px);
+}

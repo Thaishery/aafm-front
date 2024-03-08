@@ -44,18 +44,16 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
       username:loginEmail,
       password:loginPassword
     }
-    console.log("trig axios handleLoginSubmit auth.jsx")
     axios({
-      url:`${urls.apiUrl}/api/users/internal/validateToken`,
+      url:`${urls.apiUrl}/api/users/internal/login`,
       method: 'POST',
       data:body,
       headers:{'Content-Type':'application/json'}
     })
     .then((res)=>{
       if(res?.data?.token !==""|null){
-        setToken(res.data.token)
-        localStorage.setItem('trigger1',res.data.token)
         localStorage.setItem('token', res.data.token)
+        setToken(res.data.token)
         setUserIsLoggedIn(true)
       }
     })
@@ -141,6 +139,8 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
 
       {form == "login"&&
         <form onSubmit={handleLoginSubmit} className="form">
+          {//Gestion erreurs login . (credentials invalides)
+          }
           <div className={"input " + (loginEmailError !== "" ? "input--error" : "")}>
           {(loginEmailError !== "")&&
               <pre className="error_message">

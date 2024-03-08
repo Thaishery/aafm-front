@@ -40,7 +40,6 @@ const App = () => {
     }
     if (payload.exp > Math.ceil(Date.now() / 1000)) {
       try {
-        console.log("trig axios app.jsx")
         const res = await axios({
           url: `${urls.apiUrl}/api/users/internal/validateToken`,
           method: 'POST',
@@ -76,7 +75,7 @@ const App = () => {
         {// mettre ici les routes protégé par login : 
           userIsLoggedIn &&
           <Route element={<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
-            <Route path='/monCompte' element={<MonCompte />} />
+            <Route path='/monCompte' element={<MonCompte userIsLoggedIn={userIsLoggedIn} token={token} />} />
             <Route path='/Deconnection' element={<Deconnection setUserIsLoggedIn={setUserIsLoggedIn} />} /> 
           </Route>
         }

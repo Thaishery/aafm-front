@@ -4,7 +4,7 @@ import Footer from "../../componant/footer/Footer"
 import { useEffect, useState } from "react"
 import Header from "../../componant/header/header"
 
-const LogedLayout = ({userIsLoggedIn ,token}) =>{ 
+const LogedLayout = () =>{ 
   const defaultMenu = [
     {path:"/",link:"Accueil"},{path:"/monCompte",link:"Mon Compte"},{path:'/Deconnection', link:'Déconnection'}
   ]

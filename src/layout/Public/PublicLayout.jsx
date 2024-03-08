@@ -4,6 +4,7 @@ import Footer from "../../componant/footer/Footer"
 import { useEffect, useState } from "react"
 import Header from "../../componant/header/header"
 import LogedLayout from "../Loged/LogedLayout"
+import "../style.scss"
 
 const PublicLayout = ({userIsLoggedIn ,token}) =>{ 
   if(userIsLoggedIn == true){

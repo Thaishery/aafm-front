@@ -7,34 +7,21 @@ import urls from "../constants/urls";
 import axios from 'axios';
 
 const Home = ({userIsLoggedIn,token})=>{
-  // const [modules,setModules] = useState(localStorage.getItem('homeContent')?JSON.parse(localStorage.getItem('homeContent')):[])
-  const [modules,setModules] = useState([])
+  const [modules,setModules] = useState(localStorage.getItem('homeContent')?JSON.parse(localStorage.getItem('homeContent')):[])
   useEffect(()=>{
-    console.log("trig axios home.jsx")
-    // axios({
-    //   url:`${urls.apiUrl}/api/public/pages/get_home_content`,
-    //   method: 'GET',
-    // }).then((res)=>{
-    //   console.log(res)
-    //   if(res?.data?.content?.content?.modules){
-    //     // localStorage.setItem('homeContent',JSON.stringify(res?.data?.content?.content?.modules))
-    //     setModules(res?.data?.content?.content?.modules)
-    //   }
-    // })
+    axios({
+      url:`${urls.apiUrl}/api/public/pages/get_home_content`,
+      method: 'GET',
+    }).then((res)=>{
+      console.log(res)
+      if(res?.data?.content?.content?.modules){
+        localStorage.setItem('homeContent',JSON.stringify(res?.data?.content?.content?.modules))
+        setModules(res?.data?.content?.content?.modules)
+      }
+    })
   },[])
   return(
-    <>
-    {userIsLoggedIn &&
-      <>
-      logedIn
-      </>
-    }
-    {token &&
-    <>
-    {token}
-    </>
-    }
-    
+    <>    
       {
         modules && 
         modules.map((mod,key)=>{
