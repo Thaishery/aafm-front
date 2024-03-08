@@ -1,7 +1,10 @@
 const port = "8000";
 export default {
   /* Localhost */
-  apiUrl: `http://localhost:${port}`,
+  // apiUrl: `http://localhost:${port}`,
+
+  // pprod
+  apiUrl: `https://pprod.aafm.gdeb.fr:${port}`
 
   /* Shared localhost */
   // apiUrl: `http://192.168.100.123:${port}/immo/`,

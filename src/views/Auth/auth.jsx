@@ -19,7 +19,7 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
   const [registerPasswordConfirmError, setRegisterPasswordConfirmError] = useState('')
 
   const googleId = "436223154606-lq7257b6v49dvkjnvir7pirrm4k9lmjb.apps.googleusercontent.com"
-  const googleRedirect = "http://localhost:8000/api/users/external/login"
+  const googleRedirect = `${urls.apiUrl}/api/users/external/login`
 
   const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i;
   const usableEmailRegex = new RegExp(emailRegex);
