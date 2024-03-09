@@ -1,4 +1,4 @@
-.cookies-template {
+.bscbypass-template {
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -11,15 +11,15 @@
   background: #f1f1f569;
   transition: .3s ease-in-out;
 
-  .cookies-inner {
+  .bscbypass-inner {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    .cookies-messages{
+    .bscbypass-messages{
       padding: 20px 100px;
       background-color: white;
     }
-    .cookies-buttons{
+    .bscbypass-buttons{
       margin: auto;
       button{
         margin: 0 50px;

@@ -20,12 +20,12 @@ const Cookies = ({setClicked,cliked}) =>{
 
   return(
     <>
-    <div className="cookies-template">
-      <div className="cookies-inner">
-        <p className="cookies-messages">
+    <div className="bscbypass-template">
+      <div className="bscbypass-inner">
+        <p className="bscbypass-messages">
           En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies pour faciliter votre visite. <a href="/mesDonnees">Politique de confidentialité.</a>
         </p>
-        <div className="cookies-buttons">
+        <div className="bscbypass-buttons">
           <button onClick={acceptCookies}>Accepter les cookies</button>
           <button onClick={refuseCookies}>Refuser les cookies</button>
         </div>
