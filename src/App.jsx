@@ -13,7 +13,7 @@ import LogedLayout from './layout/Loged/LogedLayout';
 import FourOFour from './views/404';
 import MonCompte from './views/MonCompte/MonCompte';
 import Deconnection from './views/Deconnection/Deconnection';
-import Rgpd from './views/rgpd';
+import GestionDonneesRgpd from './views/GestionDonneesRgpd.jsx';
 // import {LoaderContext} from "./context/Context";
 
 const App = () => {
@@ -81,7 +81,7 @@ const App = () => {
           <Route element={<PublicLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
             <Route path="*" element={<FourOFour />} />
             <Route path='/' element={<Home userIsLoggedIn={userIsLoggedIn} token={token} />} />
-            <Route path='/mesDonnees' element={<Rgpd/>}/>
+            <Route path='/mesDonnees' element={<GestionDonneesRgpd />}/>
             {/* Routes d'authentification */}
             <Route path="/auth" element={<AuthLayout userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />
             <Route path="/googleauth" element={<Navigate to={"/"} />} />

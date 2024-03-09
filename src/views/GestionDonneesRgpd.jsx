@@ -1,4 +1,4 @@
-const Rgpd = ()=>{
+const GestionDonneesRgpd = ()=>{
   return(
     <>
       <h1>Politique de confidentialité et traitement des données à caractère personnel</h1>
@@ -23,4 +23,4 @@ const Rgpd = ()=>{
     </>
   )
 }
-export default Rgpd
+export default GestionDonneesRgpd
