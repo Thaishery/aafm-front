@@ -10,14 +10,13 @@ import Cookies from "../../componant/Cookies/Cookies"
 const PublicLayout = ({userIsLoggedIn ,token}) =>{ 
   const cookies = localStorage.getItem('cookies');
   const [cliked,setClicked] = useState(false)
-  if(userIsLoggedIn == true){
-    return (<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token}/>)
-  }
   const defaultMenu = [
     {path:"/",link:"Accueil"},{path:"/auth",link:"Espace membre"}
   ]
   const [navElements,setNavElements] = useState(defaultMenu)
-  return (
+  if(userIsLoggedIn == true){
+    return (<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token}/>)
+  }else return (
     <>
     {cliked &&
     <></>
