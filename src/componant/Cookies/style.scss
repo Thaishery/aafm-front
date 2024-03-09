@@ -1,0 +1,40 @@
+.cookies-template {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0; top: 0;
+  left: 0; right: 0;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f569;
+  transition: .3s ease-in-out;
+
+  .cookies-inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .cookies-messages{
+      padding: 20px 100px;
+      background-color: white;
+    }
+    .cookies-buttons{
+      margin: auto;
+      button{
+        margin: 0 50px;
+      }
+    }
+  }
+}
+
+
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

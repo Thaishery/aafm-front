@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import Articles from "../componant/Articles/Articles"
 import SimpleText from "../componant/SimpleText/SimpleText"
 import Slider from "../componant/Sliders/slider"
 import DualColList from "../componant/dualColList/dualColList"
 import urls from "../constants/urls";
 import axios from 'axios';
+// import {LoaderContext} from "../context/Context";
+// import LoadingTemplate from "../componant/LoadingTemplate";
 
 const Home = ({userIsLoggedIn,token})=>{
+  // const loader = useContext(LoaderContext);
   const [modules,setModules] = useState(localStorage.getItem('homeContent')?JSON.parse(localStorage.getItem('homeContent')):[])
   useEffect(()=>{
     axios({
@@ -17,11 +20,27 @@ const Home = ({userIsLoggedIn,token})=>{
       if(res?.data?.content?.content?.modules){
         localStorage.setItem('homeContent',JSON.stringify(res?.data?.content?.content?.modules))
         setModules(res?.data?.content?.content?.modules)
+        // loader.onSetIsLoading(false)
       }
     })
   },[])
+
+
+  // useLayoutEffect(()=>{ 
+  //   loader.onSetIsLoading(false);
+  //   return()=>{
+  //     loader.onSetIsLoading(false);
+  //   }
+  // },[])
+
+
   return(
-    <>    
+    <>
+      {/* {loader.isLoading &&
+      <>
+        <LoadingTemplate />
+      </>
+      } */}
       {
         modules && 
         modules.map((mod,key)=>{

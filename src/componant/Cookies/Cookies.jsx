@@ -1,0 +1,37 @@
+import {  useState } from "react"
+import "./style.scss";
+import { Navigate } from "react-router-dom";
+
+const Cookies = ({setClicked,cliked}) =>{
+  const acceptCookies = ()=>{
+    setClicked(!cliked)
+    cookiesExpirationTime()
+    localStorage.setItem('cookies','true')
+  }
+  const refuseCookies = ()=>{
+    setClicked(!cliked)
+    window.location.replace('https://google.fr');
+    // localStorage.setItem('cookies','false')
+    // cookiesExpirationTime()
+  }
+  const cookiesExpirationTime = ()=>{
+    localStorage.setItem('cookiesExpirations', ""+Date.now())
+  }
+
+  return(
+    <>
+    <div className="cookies-template">
+      <div className="cookies-inner">
+        <p className="cookies-messages">
+          En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies pour faciliter votre visite. <a href="/mesDonnees">Politique de confidentialité.</a>
+        </p>
+        <div className="cookies-buttons">
+          <button onClick={acceptCookies}>Accepter les cookies</button>
+          <button onClick={refuseCookies}>Refuser les cookies</button>
+        </div>
+      </div>
+    </div>
+    </>
+  )
+}
+export default Cookies;
