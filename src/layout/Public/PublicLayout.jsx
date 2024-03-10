@@ -11,7 +11,7 @@ const PublicLayout = ({userIsLoggedIn ,token}) =>{
   const cookies = localStorage.getItem('cookies');
   const [cliked,setClicked] = useState(false)
   const defaultMenu = [
-    {path:"/",link:"Accueil"},{path:"/auth",link:"Espace membre"}
+    {path:"/",link:"Accueil"},{path:"/connexion",link:"Espace membre"}
   ]
   const [navElements,setNavElements] = useState(defaultMenu)
   if(userIsLoggedIn == true){

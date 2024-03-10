@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import AuthLayout from './views/Auth/auth';
-import GoogleAuthLayout from './views/GoogleAuth/googleAuth';
+import Auth from './views/Auth/auth';
+import GoogleAuth from './views/GoogleAuth/googleAuth';
 import Home from './views/home';
 import Content from './views/content';
 import './assets/style/main.scss';
@@ -18,7 +18,6 @@ import GestionDonneesRgpd from './views/GestionDonneesRgpd.jsx';
 
 const App = () => {
   const [isLoading, setLoading] = useState(true)
-  // const context = {isLoading, onSetIsLoading:setIsLoading}
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
   const [token, setToken] = useState();
 
@@ -52,7 +51,6 @@ const App = () => {
           headers: { 'Content-Type': 'application/json' }
         });
         if (res?.data?.token) {
-          localStorage.setItem('trigger4',res.data.token)
           localStorage.setItem('token', res.data.token);
           setToken(res.data.token);
           setUserIsLoggedIn(true);
@@ -81,11 +79,22 @@ const App = () => {
           <Route element={<PublicLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
             <Route path="*" element={<FourOFour />} />
             <Route path='/' element={<Home userIsLoggedIn={userIsLoggedIn} token={token} />} />
+            {/* affichage des pages :  */}
+            {/* <Route path="/pages/:nom" elements={< />}/> */}
+            
+            {/* affichage des catégories :  */}
+            {/* <Route path="/categories/" elements={< />}/> */}
+            
+            {/* affichage d'une catégorie et de ses articles associé */}
+            {/* <Route path="/categorie/:nom/" elements={< />}/> */}
+            
+            {/* affichage d'un article d'une catégorie */}
+            {/* <Route path="/categorie/:nom/:article" elements={< />}/> */}
             <Route path='/mesDonnees' element={<GestionDonneesRgpd />}/>
             {/* Routes d'authentification */}
-            <Route path="/auth" element={<AuthLayout userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />
+            <Route path="/connexion" element={<Auth userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />
             <Route path="/googleauth" element={<Navigate to={"/"} />} />
-            <Route path="/googleauth/:gtoken" element={<GoogleAuthLayout userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />
+            <Route path="/googleauth/:gtoken" element={<GoogleAuth userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />
             {/* FIN Routes d'authentification */}
           </Route>
         </Routes>

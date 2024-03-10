@@ -4,29 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="/reset.css">
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
     let checkCookiesInterval = setInterval(setGTM, 5000)
     function setGTM() {
-      // Vérifier si le localStorage contient une clé "cookie" et si sa valeur est "true"
-      var cookieEnabled = localStorage.getItem('cookies')
+      // Vérifier si le localStorage contient une clé "cookies"
+      let cookieEnabled = localStorage.getItem('cookies')
       if (cookieEnabled) {
         clearInterval(checkCookiesInterval)
-        // Créer et ajouter l'élément de script pour le Google Tag Manager dans le head
-        var gtagScript = document.createElement('script');
+        let gtagScript = document.createElement('script');
         gtagScript.async = true;
         gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-F9QT55M4Z4";
         document.head.appendChild(gtagScript);
-        // Créer et ajouter le script de configuration du Google Tag Manager dans le head
-        var gtagConfigScript = document.createElement('script');
+        let gtagConfigScript = document.createElement('script');
         gtagConfigScript.innerText = `window.dataLayer = window.dataLayer || [];function gtag() { dataLayer.push(arguments); }gtag('js', new Date());gtag('config', 'G-F9QT55M4Z4');
         `;
         document.head.appendChild(gtagConfigScript);
       }
     }
   </script>
-  <title>Vite + React</title>
 </head>
 
 <body>

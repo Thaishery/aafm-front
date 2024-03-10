@@ -4,7 +4,7 @@ import axios from "axios";
 import urls from "../../constants/urls"
 import "./style.scss"
 
-const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
+const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
   const [form, setForm] = useState('login');
 
   const [loginEmail, setLoginEmail] = useState('')
@@ -77,7 +77,6 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
       console.log(res)
       if(res?.data?.token !==""|null){
         setToken(res.data.token)
-        localStorage.setItem('trigger2',res.data.token)
         localStorage.setItem('token', res.data.token)
         setUserIsLoggedIn(true)
       }
@@ -208,4 +207,4 @@ const AuthLayout = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
     </>
   )
 }
-export default AuthLayout
+export default Auth
