@@ -6,7 +6,7 @@ import Header from "../../componant/header/header"
 
 const LogedLayout = () =>{ 
   const defaultMenu = [
-    {path:"/",link:"Accueil"},{path:"/activitees",link:"Activitées"},{path:"/monCompte",link:"Mon Compte"},{path:'/Deconnection', link:'Déconnection'}
+    {path:"/",link:"Accueil"},{path:"/categories", link:"Catégories"},{path:"/activitees",link:"Activitées"},{path:"/monCompte",link:"Mon Compte"},{path:'/Deconnection', link:'Déconnection'}
   ]
   const [navElements,setNavElements] = useState(defaultMenu)
   return (

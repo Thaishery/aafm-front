@@ -15,7 +15,9 @@ import MonCompte from './views/MonCompte/MonCompte';
 import Deconnection from './views/Deconnection/Deconnection';
 import GestionDonneesRgpd from './views/GestionDonneesRgpd.jsx';
 import Activitees from './views/Activitees/Activitees.jsx';
-import Pages from './views/Pages/pages.jsx';
+import Pages from './views/Pages/Pages.jsx';
+import Categories from './views/Categories/Categories.jsx';
+import Categorie from './views/Categorie/Categorie.jsx';
 
 // import {LoaderContext} from "./context/Context";
 
@@ -72,6 +74,15 @@ const App = () => {
     // <LoaderContext.Provider value={context}>
       <BrowserRouter>
         <Routes>
+
+          {/* préparation du layout modérateur :  */}
+          {/* {
+            (userIsLoggedIn && userRoles ==="ROLE_MODERATOR") && 
+            <Route element={<ModedLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
+              <Route path='/moderation' element={<Moderation userIsLoggedIn={userIsLoggedIn} token={token} />} />
+            </Route>
+          } */}
+          
           {// mettre ici les routes protégé par login : 
             userIsLoggedIn &&
             <Route element={<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
@@ -83,17 +94,19 @@ const App = () => {
           <Route element={<PublicLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
             <Route path="*" element={<FourOFour />} />
             <Route path='/' element={<Home userIsLoggedIn={userIsLoggedIn} token={token} />} />
+            
             {/* affichage des pages :  */}
-            <Route path="/pages/:pagenom" element={<Pages userIsLoggedIn={userIsLoggedIn} token={token} />}/>
+            <Route path="/pages/:pagenom/" element={<Pages />}/>
             
             {/* affichage des catégories :  */}
-            {/* <Route path="/categories/" elements={< />}/> */}
+            <Route path="/categories/" element={<Categories />}/>
             
             {/* affichage d'une catégorie et de ses articles associé */}
-            {/* <Route path="/categorie/:nom/" elements={< />}/> */}
+            <Route path="/categorie/:nom/" element={<Categorie />}/>
             
             {/* affichage d'un article d'une catégorie */}
-            {/* <Route path="/categorie/:nom/:article" elements={< />}/> */}
+            {/* <Route path="/categorie/:nom/:article" element={< />}/> */}
+            
             <Route path='/mesDonnees' element={<GestionDonneesRgpd />}/>
             {/* Routes d'authentification */}
             <Route path="/connexion" element={<Auth userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />

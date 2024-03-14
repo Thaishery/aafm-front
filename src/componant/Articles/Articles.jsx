@@ -1,43 +1,41 @@
+import ModuleRender from "../ModuleRender/ModuleRender";
 import "./articles.scss"
 const Articles = ({articles}) =>{
+  const url = (window.location.href.toString().split(window.location.host)[1].charAt(window.location.href.toString().split(window.location.host)[1].length)-1 === "/")?window.location.href.toString():window.location.href.toString()+"/"
   return (
     <>
-    {articles &&
-    articles.map((article, key)=>{
-      return( 
-        <article key={key} className="articles">
-          {article.figure &&
-            <figure className="-figure">
-              <img className="-img" src={article.figure.src} alt={article.figure.alt} />
-              {article.figure.caption &&
-                <figcaption className="-caption">
-                  {article.figure.caption.title &&
-                    <h3 className="-title">{article.figure.caption.title}</h3>
+      {articles &&
+        articles.map((article, key)=>{
+          return( 
+            <article key={key} className="articles">
+              {article?.description?.figure &&
+                <figure className="-figure">
+                  <img className="-img" src={article?.description?.figure?.src} alt={article?.description?.figure?.alt} />
+                  {article?.description?.figure?.caption &&
+                    <figcaption className="-caption">
+                      {article?.description?.figure?.caption?.title &&
+                        <h3 className="-title">{article?.description?.figure?.caption?.title}</h3>
+                      }
+                      {article?.description?.figure?.caption?.desc &&
+                        <p className="-content">{article?.description?.figure?.caption?.desc}</p>
+                      }
+                    </figcaption>
                   }
-                  {article.figure.caption.desc &&
-                    <p className="-content">{article.figure.caption.desc}</p>
-                  }
-                </figcaption>
+                </figure>
               }
-            </figure>
-          }
-          {article.title &&
-            <h2 className="-title">{article.title}</h2>
-          }
-          {article.content &&
-            article.content.map((content,key)=>{
-              return( 
-              <p className="-content" key={key}>
-                {content}
-              </p>)
-            })
-          }
-          {article.link &&
-            <a className="-cta articleBtn" href={article.link.href}>{article.link.cta}</a>
-          }
-        </article>
-      )
-    })}
+              {article.title &&
+                <h2 className="-title">{article.title}</h2>
+              }
+              {article?.description?.content &&
+                <ModuleRender modules={article?.description?.content} />
+              }
+              {article?.description?.link &&
+                <a className="-cta articleBtn" href={url+""+article.title}>{article.description.link.cta}</a>
+              }
+            </article>
+          )
+        })
+      }
     </>
 
   )

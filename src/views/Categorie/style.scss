@@ -1,0 +1,22 @@
+.button_container{
+  width: 100%;
+}
+.button{
+  a{
+    text-decoration: none;
+    color: unset;
+  }
+  display: block;
+  margin: auto;
+  width: 50%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 20px;
+  background-color: transparent;
+  border-radius: 16px;
+  border: 2px solid black;
+  &:hover{
+    cursor: pointer;
+    border: 2px solid red;
+  }
+}
