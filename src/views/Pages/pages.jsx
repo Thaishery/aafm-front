@@ -20,7 +20,7 @@ const Pages = ()=>{
         if(res?.status === 200) setPageContent(res?.data?.content)
       })
   })
-  console.log(pageContent)
+  
   return(
     <>
       {!pagefound &&
