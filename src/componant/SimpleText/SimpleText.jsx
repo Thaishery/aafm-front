@@ -25,8 +25,13 @@ const SimpleText = ({articles}) =>{
                         <Fragment key={key}>
                           <a href={content.link}>{content.value}</a>
                         </Fragment>)
+                    case 'title':
+                      return (
+                        <Fragment key={key}>
+                          <h2>{content.value}</h2>
+                        </Fragment>)
                     default:
-                      break;
+                      return(<></>)
                   }
                 })}
               </article>

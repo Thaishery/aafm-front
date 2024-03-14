@@ -21,7 +21,7 @@ const Slider = ({slides})=>{
   return(
     <div className="slider">
       <Controls next={()=>handelNext()} prev={()=>handelPrevious()}  slides={slides} curent={activeSlide} setActive={()=>setSlideFromDots}/>
-      { slides.map((slide,key)=>{return <Slide key={key} src={slide.src} alt={slide.alt} havecaptions={slide.havecaptions} title={slide.title} desc={slide.desc} active={key==activeSlide?true:false} />})}
+      { slides.map((slide,key)=>{return <Slide key={key} src={slide.src} alt={slide.alt} havecaptions={slide.havecaptions} title={slide.title} desc={slide.desc} active={key===activeSlide?true:false} />})}
     </div>
   )
 }

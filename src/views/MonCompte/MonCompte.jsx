@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import  axios  from "axios"
 import urls from "../../constants/urls";
 import "./style.scss"
 
 const MonCompte = ({userIsLoggedIn ,token})=>{
+
   const [userInfo,setUserInfo] = useState({
     id: null,
     email: "",
@@ -13,16 +14,16 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
     adhesion: {},
     articles: {},
   })
+
   const [data, setData] = useState({
     password:"",
     passwordVerif:""
   })
+
   const [demandeAdhesion, setDemandeAdhesion] = useState({
     commentaire:""
   })
-  useEffect(()=>{
-    getUserInfos()
-  },[])
+  
   const getUserInfos = async () => {
     try{
       const res = await axios({
@@ -31,7 +32,6 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res?.data) {
-        console.log(res.data)
         setUserInfo(res.data)
       } else {
       }
@@ -39,7 +39,28 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
       console.error('Error validating token:', error);
     } finally {
     }
-  }
+  } 
+  
+  useEffect(()=>{
+    async function fetchData(){
+      try{
+        const res = await axios({
+          url: `${urls.apiUrl}/api/auth/users/getSelf`,
+          method: 'GET',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res?.data) {
+          setUserInfo(res.data)
+        } else {
+        }
+      } catch (error) {
+        console.error('Error validating token:', error);
+      } finally {
+      }
+    }
+    fetchData()
+  },[token])
+
   const handleEditProfile =(e)=>{
     e.preventDefault()
     axios({
@@ -55,6 +76,7 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
       //should confirm here ... 
     })
   }
+
   const prepareData = ()=>{
     let senddata = {
       email: userInfo.email,
@@ -65,21 +87,42 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
     if(data.passwordVerif)senddata.passwordVerif = data.passwordVerif;
     return senddata
   }
+
   const handleLastname = (e)=>{
     setUserInfo({...userInfo, lastname: e.target.value})
   }
+
   const handleFirstname = (e)=>{
     setUserInfo({...userInfo, firstname: e.target.value})
   }
+
   const handlePassword = (e)=>{
     setData({...data, password: e.target.value})
   }
+
   const handlePasswordConfirm = (e)=>{
     setData({...data, passwordVerif: e.target.value})
   }
+
   const handleDemandeCommentaire = (e) =>{
     setDemandeAdhesion({...demandeAdhesion, commentaire: e.target.value})
   }
+  const handelCancelActivity = async (activite)=>{
+    if(window.confirm('Confirmer la désincription a l\'activitée?')===true){
+      await axios({
+        url:`${urls.apiUrl}/api/auth/activitees/desinscrire/${activite.id}`,
+        method: 'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then((res)=>{
+        if(res.status === 200)getUserInfos();
+      })
+    }
+  }
+
   const handleDemandeAdhesion = (e)=>{
     e.preventDefault()
     axios({
@@ -92,9 +135,7 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
       }
     })
     .then((res)=>{
-      console.log(res)
-      if(res.data.message == "ok")getUserInfos();
-      //should confirm here ... 
+      if(res.status === 200)getUserInfos();
     })
   }
 
@@ -174,8 +215,34 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
           </div>
         }
       </div>
-      <hr></hr>
-      <h2>Mes activitées a venir</h2>
+      {(userInfo?.activitees.length>0)&&
+      <>
+        <hr></hr>
+        <h2>Mes activitées</h2>
+        <p>Retrouver ici la liste de vos activitées a venirs</p>
+        {userInfo?.activitees?.map((activite,key)=>{
+          if(!activite.is_open)return(<Fragment key={key}></Fragment>); // no closed activity shown ... 
+          let datetime = new Date(activite.date.date)
+          if(datetime < new Date())return(<Fragment key={key}></Fragment>); // no pased activity shown ... 
+          return(
+            // this shoudl be a componant ... 
+            <div key={key}>
+            <div>{activite.nom}</div>
+            <div>Le : {new Date(activite.date.date).toLocaleString().slice(0,16).replace(" "," à ")}</div>
+            {
+              (activite?.description !== "" && activite?.description !== "optionel" )&&
+              <>
+                <div>Desciption : </div>
+                <p>{activite?.description}</p>
+              </>
+            }
+            <button type="button" onClick={()=>{handelCancelActivity(userInfo.activitees[key])}}>Me désincrire.</button>
+            <hr></hr>
+          </div>
+          )
+        })}
+      </>  
+      }
     </div>
   )
 }

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { Navigate, Outlet, redirect, useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { Navigate, Outlet, useParams } from "react-router-dom"
 import axios from 'axios';
 import urls from "../../constants/urls";
 
@@ -13,7 +13,7 @@ const GoogleAuth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
         url:`${urls.apiUrl}/api/users/internal/googlelogin/${gtoken}`,
         method: 'GET',
       }).then((res)=>{
-        if(res.data.token == undefined){
+        if(res.data.token === undefined){
           console.log('undefined')
           window.location.replace('/');
         } 
@@ -25,7 +25,7 @@ const GoogleAuth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
     if(!userIsLoggedIn){
       validateToken()
     }
-  },[])
+  })
 
   return(
     <>

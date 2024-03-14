@@ -1,8 +1,8 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
-import Articles from "../componant/Articles/Articles"
+import { useEffect, useState } from "react";
+// import Articles from "../componant/Articles/Articles"
 import SimpleText from "../componant/SimpleText/SimpleText"
 import Slider from "../componant/Sliders/slider"
-import DualColList from "../componant/dualColList/dualColList"
+// import DualColList from "../componant/dualColList/dualColList"
 import urls from "../constants/urls";
 import axios from 'axios';
 import Helmet from 'react-helmet';
@@ -41,15 +41,15 @@ const Home = ({userIsLoggedIn,token})=>{
                 key={key}  
                 articles={mod.module_content}
               />
-            break
             case 'slider':
               return <Slider
               key={key}
               slides={mod.module_content}
               />
-            break
-
+            default:
+              break;
           }
+          return(<></>)
         })
       }
     

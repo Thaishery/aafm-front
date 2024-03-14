@@ -1,11 +1,11 @@
-import { Outlet } from "react-router-dom"
+// import { Outlet } from "react-router-dom"
 // import Logo from '../../assets/img/logo_clean.webp'
 import Logo from '/logo_clean.webp'
 import Burger from "../../componant/Navbar/burger"
 import NavDesktop from "../../componant/Navbar/nav-desktop"
-import Footer from "../../componant/footer/Footer"
+// import Footer from "../../componant/footer/Footer"
 import './style.scss'
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 
 const Header = ({navElements}) =>{ 
   return (

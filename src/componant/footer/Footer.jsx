@@ -35,13 +35,13 @@ const Footer = () =>{
       <div className="social-network">
         <span className='social-network-text'>Retrouvez nous sur : </span>
         <div className="social-links">
-          <a href="">
+          <a href="#">
             <img className='social-logo' src={instagramLogo} alt="logo du reseau social" />
           </a>
-          <a href="">
+          <a href="#">
             <img className='social-logo' src={instagramLogo} alt="logo du reseau social" />
           </a>
-          <a href="">
+          <a href="#">
             <img className='social-logo' src={instagramLogo} alt="logo du reseau social" />
           </a>
         </div>
@@ -52,7 +52,7 @@ const Footer = () =>{
         </div>
         <div className='copyright-separator'></div>
         <div className="copyright-right">
-          <span>Réaliser par : <a className='copyright-link' href="http://gdeb.fr" target="_blank">Guillaume DEBUCQUET</a></span>
+          <span>Réaliser par : <a className='copyright-link' rel="noreferrer" href="http://gdeb.fr" target="_blank">Guillaume DEBUCQUET</a></span>
         </div>
       </div>
     </div>

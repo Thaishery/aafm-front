@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { Navigate, Outlet } from "react-router-dom"
+import {  useState } from "react"
+import { Navigate } from "react-router-dom"
 import axios from "axios";
 import urls from "../../constants/urls"
 import "./style.scss"
@@ -21,7 +21,7 @@ const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
   const googleId = "436223154606-lq7257b6v49dvkjnvir7pirrm4k9lmjb.apps.googleusercontent.com"
   const googleRedirect = `${urls.apiUrl}/api/users/external/login`
 
-  const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i;
+  const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
   const usableEmailRegex = new RegExp(emailRegex);
 
   const handleFormChange = (form) =>{
@@ -86,7 +86,7 @@ const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
   const handleLoginEmailChange = (e)=>{
     if(!usableEmailRegex.test( e.target.value))
     {
-      if(e.target.value == ""){
+      if(e.target.value === ""){
         setLoginEmailError('l\'email ne peux pas être vide');
       }else{
         setLoginEmailError('format invalide');
@@ -100,7 +100,7 @@ const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
   const handleRegisterEmailChange = (e)=>{
     if(!usableEmailRegex.test( e.target.value))
     {
-      if(e.target.value == ""){
+      if(e.target.value === ""){
         setRegisterEmailError('l\'email ne peux pas être vide');
       }else{
         setRegisterEmailError('format invalide');
@@ -132,11 +132,11 @@ const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
     }
     <div className="container login_container">
       <div className="login_container form_select">
-        <button className={"form_select form_select_button "+(form == "login" ? "--activ" : "")} onClick={()=>{handleFormChange("login")}}>Se connecter</button>
-        <button className={"form_select form_select_button "+(form == "register" ? "--activ" : "")} onClick={()=>{handleFormChange("register")}}>S'inscrire</button>
+        <button className={"form_select form_select_button "+(form === "login" ? "--activ" : "")} onClick={()=>{handleFormChange("login")}}>Se connecter</button>
+        <button className={"form_select form_select_button "+(form === "register" ? "--activ" : "")} onClick={()=>{handleFormChange("register")}}>S'inscrire</button>
       </div>
 
-      {form == "login"&&
+      {form === "login"&&
         <form onSubmit={handleLoginSubmit} className="form">
           {//Gestion erreurs login . (credentials invalides)
           }
@@ -164,7 +164,7 @@ const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
         </form>
       }
       
-      {form == "register"&&
+      {form === "register"&&
         <form onSubmit={handleRegisterSubmit} className="form">
           <div className={"input " + (registerEmailError !== "" ? "input--error" : "")}>
           {(registerEmailError !== "")&&

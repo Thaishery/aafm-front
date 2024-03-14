@@ -2,22 +2,25 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Auth from './views/Auth/auth';
 import GoogleAuth from './views/GoogleAuth/googleAuth';
 import Home from './views/home';
-import Content from './views/content';
+// import Content from './views/content';
 import './assets/style/main.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import urls from './constants/urls';
-import Header from './componant/header/header';
+// import Header from './componant/header/header';
 import PublicLayout from './layout/Public/PublicLayout';
 import LogedLayout from './layout/Loged/LogedLayout';
 import FourOFour from './views/404';
 import MonCompte from './views/MonCompte/MonCompte';
 import Deconnection from './views/Deconnection/Deconnection';
 import GestionDonneesRgpd from './views/GestionDonneesRgpd.jsx';
+import Activitees from './views/Activitees/Activitees.jsx';
+import Pages from './views/Pages/pages.jsx';
+
 // import {LoaderContext} from "./context/Context";
 
 const App = () => {
-  const [isLoading, setLoading] = useState(true)
+  // const [isLoading, setLoading] = useState(true)
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
   const [token, setToken] = useState();
 
@@ -27,17 +30,17 @@ const App = () => {
   const validLocalToken = async () => {
     let token = localStorage.getItem('token');
     if (token == null) {
-      setLoading(false);
+      // setLoading(false);
       return;
     }
     let splited = token.split('.');
     if (splited[1] == null) {
-      setLoading(false);
+      // setLoading(false);
       return;
     }
     let payload = JSON.parse(atob(splited[1]));
     if (payload?.exp == null) {
-      setLoading(false);
+      // setLoading(false);
       return;
     }
     if (payload.exp > Math.ceil(Date.now() / 1000)) {
@@ -72,6 +75,7 @@ const App = () => {
           {// mettre ici les routes protégé par login : 
             userIsLoggedIn &&
             <Route element={<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
+              <Route path='/activitees' element={<Activitees userIsLoggedIn={userIsLoggedIn} token={token} />} />
               <Route path='/monCompte' element={<MonCompte userIsLoggedIn={userIsLoggedIn} token={token} />} />
               <Route path='/Deconnection' element={<Deconnection setUserIsLoggedIn={setUserIsLoggedIn} />} /> 
             </Route>
@@ -80,7 +84,7 @@ const App = () => {
             <Route path="*" element={<FourOFour />} />
             <Route path='/' element={<Home userIsLoggedIn={userIsLoggedIn} token={token} />} />
             {/* affichage des pages :  */}
-            {/* <Route path="/pages/:nom" elements={< />}/> */}
+            <Route path="/pages/:pagenom" element={<Pages userIsLoggedIn={userIsLoggedIn} token={token} />}/>
             
             {/* affichage des catégories :  */}
             {/* <Route path="/categories/" elements={< />}/> */}
