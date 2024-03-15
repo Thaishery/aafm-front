@@ -67,8 +67,6 @@ const App = () => {
       } catch (error) {
         console.error('Error validating token:', error);
       } finally {
-        console.log(userRoles.indexOf('ROLE_MODERATOR'));
-        console.log(userRoles.indexOf('ROLE_ADMIN'))
         // setLoading(false);
       }
     }

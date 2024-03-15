@@ -16,7 +16,6 @@ const Home = ({userIsLoggedIn,token})=>{
       url:`${urls.apiUrl}/api/public/pages/get_home_content`,
       method: 'GET',
     }).then((res)=>{
-      console.log(res)
       if(res?.data?.content?.content?.modules){
         localStorage.setItem('homeContent',JSON.stringify(res?.data?.content?.content?.modules))
         setModules(res?.data?.content?.content?.modules)

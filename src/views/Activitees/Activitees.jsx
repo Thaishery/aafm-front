@@ -58,7 +58,6 @@ const Activitees = ({userIsLoggedIn ,token}) =>{
           method: 'GET',
           headers: { 'Authorization': `Bearer ${token}` }
         }).then((res)=>{
-          console.log(res)
           setActivitees(res?.data?.message)
         });
       }catch(e){
