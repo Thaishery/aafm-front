@@ -1,7 +1,7 @@
 import ModuleRender from "../ModuleRender/ModuleRender";
 import "./articles.scss"
 const Articles = ({articles}) =>{
-  const url = (window.location.href.toString().split(window.location.host)[1].charAt(window.location.href.toString().split(window.location.host)[1].length)-1 === "/")?window.location.href.toString():window.location.href.toString()+"/"
+  const url = (window.location.href.toString().split(window.location.host)[1].charAt(window.location.href.toString().split(window.location.host)[1].length-1)=== "/")?window.location.href.toString():window.location.href.toString()+"/"
   return (
     <>
       {articles &&

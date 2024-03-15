@@ -16,6 +16,7 @@ import Activitees from './views/Activitees/Activitees.jsx';
 import Pages from './views/Pages/Pages.jsx';
 import Categories from './views/Categories/Categories.jsx';
 import Categorie from './views/Categorie/Categorie.jsx';
+import Article from './views/Article/Article.jsx';
 
 // import {LoaderContext} from "./context/Context";
 
@@ -103,7 +104,7 @@ const App = () => {
             <Route path="/categorie/:nom/" element={<Categorie />}/>
             
             {/* affichage d'un article d'une catégorie */}
-            {/* <Route path="/categorie/:nom/:article" element={< />}/> */}
+            <Route path="/categorie/:nom/:article" element={<Article />}/>
             
             <Route path='/mesDonnees' element={<GestionDonneesRgpd />}/>
             {/* Routes d'authentification */}
