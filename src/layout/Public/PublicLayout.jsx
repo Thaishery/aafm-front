@@ -7,7 +7,7 @@ import LogedLayout from "../Loged/LogedLayout"
 import "../style.scss"
 import Cookies from "../../componant/Cookies/Cookies"
 
-const PublicLayout = ({userIsLoggedIn ,token}) =>{ 
+const PublicLayout = ({userIsLoggedIn ,token, userRoles}) =>{ 
   const [cookies,setCookies] = useState();
   useEffect(()=>{
     setCookies(localStorage.getItem('cookies'));
@@ -18,7 +18,7 @@ const PublicLayout = ({userIsLoggedIn ,token}) =>{
   ]
   const [navElements,setNavElements] = useState(defaultMenu)
   if(userIsLoggedIn === true){
-    return (<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token}/>)
+    return (<LogedLayout userRoles={userRoles}/>)
   }else return (
     <>
       {cliked &&

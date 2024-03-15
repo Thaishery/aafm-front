@@ -11,12 +11,14 @@ import LogedLayout from './layout/Loged/LogedLayout';
 import FourOFour from './views/404';
 import MonCompte from './views/MonCompte/MonCompte';
 import Deconnection from './views/Deconnection/Deconnection';
-import GestionDonneesRgpd from './views/GestionDonneesRgpd.jsx';
+// import GestionDonneesRgpd from './views/GestionDonneesRgpd.jsx';
 import Activitees from './views/Activitees/Activitees.jsx';
 import Pages from './views/Pages/Pages.jsx';
 import Categories from './views/Categories/Categories.jsx';
 import Categorie from './views/Categorie/Categorie.jsx';
 import Article from './views/Article/Article.jsx';
+import ModedLayout from './layout/Moded/ModedLayout.jsx';
+import Moderation from './views/Moderation/Moderation.jsx';
 
 // import {LoaderContext} from "./context/Context";
 
@@ -24,10 +26,9 @@ const App = () => {
   // const [isLoading, setLoading] = useState(true)
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
   const [token, setToken] = useState();
+  const [userRoles, setUserRoles] = useState("");
 
-  useEffect(() => {
-    validLocalToken();
-  }, []);
+
   const validLocalToken = async () => {
     let token = localStorage.getItem('token');
     if (token == null) {
@@ -55,6 +56,8 @@ const App = () => {
           headers: { 'Content-Type': 'application/json' }
         });
         if (res?.data?.token) {
+          let tempToken = res?.data?.token
+          setUserRoles(JSON.parse(atob(tempToken.split('.')[1])).roles);
           localStorage.setItem('token', res.data.token);
           setToken(res.data.token);
           setUserIsLoggedIn(true);
@@ -64,33 +67,38 @@ const App = () => {
       } catch (error) {
         console.error('Error validating token:', error);
       } finally {
+        console.log(userRoles.indexOf('ROLE_MODERATOR'));
+        console.log(userRoles.indexOf('ROLE_ADMIN'))
         // setLoading(false);
       }
     }
   };
+  useEffect(() => {
+    validLocalToken();
+  },[]);
 
   return (
     // <LoaderContext.Provider value={context}>
       <BrowserRouter>
         <Routes>
 
-          {/* préparation du layout modérateur :  */}
-          {/* {
-            (userIsLoggedIn && userRoles ==="ROLE_MODERATOR") && 
+          {/* mettre ici les routes protégé pour modération : */}
+          {(userIsLoggedIn && (userRoles.indexOf('ROLE_MODERATOR') !== -1 || userRoles.indexOf('ROLE_ADMIN') !== -1)) && 
             <Route element={<ModedLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
               <Route path='/moderation' element={<Moderation userIsLoggedIn={userIsLoggedIn} token={token} />} />
             </Route>
-          } */}
+          }
           
-          {// mettre ici les routes protégé par login : 
-            userIsLoggedIn &&
-            <Route element={<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
+          {/* mettre ici les routes protégé par login :  */}
+          {userIsLoggedIn &&
+            <Route element={<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token} userRoles={userRoles} />}>
               <Route path='/activitees' element={<Activitees userIsLoggedIn={userIsLoggedIn} token={token} />} />
               <Route path='/monCompte' element={<MonCompte userIsLoggedIn={userIsLoggedIn} token={token} />} />
               <Route path='/Deconnection' element={<Deconnection setUserIsLoggedIn={setUserIsLoggedIn} />} /> 
             </Route>
           }
-          <Route element={<PublicLayout userIsLoggedIn={userIsLoggedIn} token={token} />}>
+          {/* mettre ici les routes non protégé :  */}
+          <Route element={<PublicLayout userIsLoggedIn={userIsLoggedIn} token={token} userRoles={userRoles} />}>
             <Route path="*" element={<FourOFour />} />
             <Route path='/' element={<Home userIsLoggedIn={userIsLoggedIn} token={token} />} />
             
@@ -106,7 +114,8 @@ const App = () => {
             {/* affichage d'un article d'une catégorie */}
             <Route path="/categorie/:nom/:article" element={<Article />}/>
             
-            <Route path='/mesDonnees' element={<GestionDonneesRgpd />}/>
+            {/* <Route path='/mesDonnees' element={<GestionDonneesRgpd />}/> */}
+
             {/* Routes d'authentification */}
             <Route path="/connexion" element={<Auth userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />
             <Route path="/googleauth" element={<Navigate to={"/"} />} />
