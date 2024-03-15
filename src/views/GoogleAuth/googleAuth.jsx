@@ -3,7 +3,7 @@ import { Navigate, Outlet, useParams } from "react-router-dom"
 import axios from 'axios';
 import urls from "../../constants/urls";
 
-const GoogleAuth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
+const GoogleAuth = ({userIsLoggedIn,setUserIsLoggedIn,setUserRoles,setToken, token}) =>{
 
   let { gtoken } = useParams();
   useEffect(()=>{
@@ -17,6 +17,7 @@ const GoogleAuth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
           console.log('undefined')
           window.location.replace('/');
         } 
+        setUserRoles(JSON.parse(atob(res.data.token.split('.')[1])).roles);
         localStorage.setItem('token', res.data.token)
         setUserIsLoggedIn(true)
         setToken(res.data.token)

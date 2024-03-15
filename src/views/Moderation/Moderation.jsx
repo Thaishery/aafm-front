@@ -1,5 +1,10 @@
 import { Fragment, useState } from "react"
 import "./style.scss"
+import ModPages from "./Pages/ModPages"
+import ModArticles from "./Articles/ModArticles"
+import ModCategories from "./Categories/ModCategories"
+import ModActivitees from "./Activitees/ModActivitees"
+import ModMembres from "./Membres/ModMembres"
 const Moderation = ()=>{
   //? ici nous allons placer toute la logique de médération . 
   const [currentTab, setCurrentTab] = useState('Pages')
@@ -33,25 +38,15 @@ const Moderation = ()=>{
         {[currentTab].map((currentTab,key)=>{
           switch(currentTab){
             case 'Pages': 
-              return <Fragment key={key}>
-                  Pages
-              </Fragment>
+              return <ModPages />
             case 'Articles': 
-            return <Fragment key={key}>
-                Articles
-            </Fragment>
+              return <ModArticles />
             case 'Catégories': 
-            return <Fragment key={key}>
-                Catégories
-            </Fragment>
+              return <ModCategories />
             case 'Activitées': 
-            return <Fragment key={key}>
-                Activitées
-            </Fragment>
+              return <ModActivitees />
             case 'Membres': 
-            return <Fragment key={key}>
-                Membres
-            </Fragment>
+              return <ModMembres />
             default : 
               return <></>
           }

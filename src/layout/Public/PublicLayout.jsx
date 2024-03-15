@@ -11,7 +11,7 @@ const PublicLayout = ({userIsLoggedIn ,token, userRoles}) =>{
   const [cookies,setCookies] = useState();
   useEffect(()=>{
     setCookies(localStorage.getItem('cookies'));
-  },[])
+  })
   const [cliked,setClicked] = useState(false)
   const defaultMenu = [
     {path:"/",link:"Accueil"},{path:"/categories", link:"Catégories"},{path:"/connexion",link:"Espace membre"}
@@ -22,9 +22,7 @@ const PublicLayout = ({userIsLoggedIn ,token, userRoles}) =>{
   }else return (
     <>
       {cliked &&
-        <> 
-          {/* cheap way to force re-render */}
-        </>
+        <></>
       }
       <Header navElements={navElements} />
       <div className="main_container">

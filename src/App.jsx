@@ -117,7 +117,7 @@ const App = () => {
             {/* Routes d'authentification */}
             <Route path="/connexion" element={<Auth userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />
             <Route path="/googleauth" element={<Navigate to={"/"} />} />
-            <Route path="/googleauth/:gtoken" element={<GoogleAuth userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setToken={setToken} token={token} />} />
+            <Route path="/googleauth/:gtoken" element={<GoogleAuth userIsLoggedIn={userIsLoggedIn} setUserIsLoggedIn={setUserIsLoggedIn} setUserRoles={setUserRoles} setToken={setToken} token={token} />} />
             {/* FIN Routes d'authentification */}
           </Route>
         </Routes>
