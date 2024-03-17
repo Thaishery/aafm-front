@@ -28,7 +28,6 @@ const App = () => {
   const [token, setToken] = useState();
   const [userRoles, setUserRoles] = useState("");
 
-
   const validLocalToken = async () => {
     let token = localStorage.getItem('token');
     if (token == null) {
@@ -56,21 +55,49 @@ const App = () => {
           headers: { 'Content-Type': 'application/json' }
         });
         if (res?.data?.token) {
-          let tempToken = res?.data?.token
-          setUserRoles(JSON.parse(atob(tempToken.split('.')[1])).roles);
+          setUserRoles(JSON.parse(atob(res?.data?.token.split('.')[1])).roles);
           localStorage.setItem('token', res.data.token);
           setToken(res.data.token);
           setUserIsLoggedIn(true);
+          setInterval(refreshToken, 7180*1000)
         } else {
           localStorage.removeItem('token');
         }
       } catch (error) {
+        localStorage.removeItem('token');
         console.error('Error validating token:', error);
       } finally {
         // setLoading(false);
       }
     }
   };
+
+  const refreshToken = async ()=>{
+    let token = localStorage.getItem('token')
+    if(!token)return
+    try {
+      const res = await axios({
+        url: `${urls.apiUrl}/api/users/internal/validateToken`,
+        method: 'POST',
+        data: {
+          token: token
+        },
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (res?.data?.token) {
+        localStorage.setItem('token', res.data.token);
+        setToken(res.data.token);
+      } 
+      else {
+      }
+    } catch (error) {
+      localStorage.removeItem('token');
+      setUserIsLoggedIn(false);
+    } finally {
+      // setLoading(false);
+    }
+  }
+
   useEffect(() => {
     validLocalToken();
   },[]);

@@ -1,11 +1,11 @@
 import { Fragment, useState } from "react"
-import "./style.scss"
+import "./moderation.scss"
 import ModPages from "./Pages/ModPages"
 import ModArticles from "./Articles/ModArticles"
 import ModCategories from "./Categories/ModCategories"
 import ModActivitees from "./Activitees/ModActivitees"
 import ModMembres from "./Membres/ModMembres"
-const Moderation = ()=>{
+const Moderation = ({userIsLoggedIn,token})=>{
   //? ici nous allons placer toute la logique de médération . 
   const [currentTab, setCurrentTab] = useState('Pages')
   const handleMenuClick = (menu)=>{
@@ -17,19 +17,19 @@ const Moderation = ()=>{
         <nav>
           <ul>
             <li>
-              <button onClick={()=>{handleMenuClick('Pages')}}>Pages</button>
+              <button className={"mod_button" + (currentTab==="Pages"?" --active":"")} onClick={()=>{handleMenuClick('Pages')}}>Pages</button>
             </li>
             <li>
-              <button onClick={()=>{handleMenuClick('Articles')}}>Articles</button>
+              <button className={"mod_button" + (currentTab==="Articles"?" --active":"")} onClick={()=>{handleMenuClick('Articles')}}>Articles</button>
             </li>
             <li>
-              <button onClick={()=>{handleMenuClick('Catégories')}}>Catégories</button>
+              <button className={"mod_button" + (currentTab==="Catégories"?" --active":"")} onClick={()=>{handleMenuClick('Catégories')}}>Catégories</button>
             </li>
             <li>
-              <button onClick={()=>{handleMenuClick('Activitées')}}>Activitées</button>
+              <button className={"mod_button" + (currentTab==="Activitées"?" --active":"")} onClick={()=>{handleMenuClick('Activitées')}}>Activitées</button>
             </li>
             <li>
-              <button onClick={()=>{handleMenuClick('Membres')}}>Membres</button>
+              <button className={"mod_button" + (currentTab==="Membres"?" --active":"")} onClick={()=>{handleMenuClick('Membres')}}>Membres</button>
             </li>
           </ul>
         </nav>
@@ -38,15 +38,15 @@ const Moderation = ()=>{
         {[currentTab].map((currentTab,key)=>{
           switch(currentTab){
             case 'Pages': 
-              return <ModPages />
+              return <ModPages key={key} token={token} />
             case 'Articles': 
-              return <ModArticles />
+              return <ModArticles key={key} />
             case 'Catégories': 
-              return <ModCategories />
+              return <ModCategories key={key} />
             case 'Activitées': 
-              return <ModActivitees />
+              return <ModActivitees key={key} />
             case 'Membres': 
-              return <ModMembres />
+              return <ModMembres key={key} />
             default : 
               return <></>
           }

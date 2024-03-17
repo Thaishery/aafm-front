@@ -21,12 +21,39 @@ const GoogleAuth = ({userIsLoggedIn,setUserIsLoggedIn,setUserRoles,setToken, tok
         localStorage.setItem('token', res.data.token)
         setUserIsLoggedIn(true)
         setToken(res.data.token)
+        setInterval(refreshToken, 7180*1000)
       })
     }
     if(!userIsLoggedIn){
       validateToken()
     }
   })
+  
+  const refreshToken = async ()=>{
+    let token = localStorage.getItem('token')
+    if(!token)return
+    try {
+      const res = await axios({
+        url: `${urls.apiUrl}/api/users/internal/validateToken`,
+        method: 'POST',
+        data: {
+          token: token
+        },
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (res?.data?.token) {
+        localStorage.setItem('token', res.data.token);
+        setToken(res.data.token);
+      } 
+      else {
+      }
+    } catch (error) {
+      localStorage.removeItem('token');
+      setUserIsLoggedIn(false);
+    } finally {
+      // setLoading(false);
+    }
+  }
 
   return(
     <>

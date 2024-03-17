@@ -1,0 +1,29 @@
+.moderation__view__container{
+  display: flex;
+  height: 84vh;
+  .mod_button{
+    width: 90%;
+    min-width: max-content;
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    text-align: left;
+    border: unset;
+    border-bottom: 1px solid black;
+    border-right: 1px solid red;
+    background-color: unset;
+    &:hover{
+      box-shadow: 0 0 6px rgb(0, 0, 0);
+    }
+    &.--active{
+      text-decoration: underline red;
+      text-underline-offset: 5px;
+    }
+  }
+  .right__menu{
+    width: 25%;
+    min-width: max-content;
+  }
+  .right_container{
+    // width: 80%;
+  }
+}
