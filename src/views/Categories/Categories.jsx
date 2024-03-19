@@ -31,8 +31,8 @@ const Categories = ()=>{
         <title>Categories - Association de l'amitié Franco-Marocaine de Grigny.</title>
         <meta name="description" content="Retrouvez ici nos nos catégories d'actualitées." />
       </Helmet>
-
-      {((typeof(categories)==="array")&&categories.length > 0) && 
+      
+      {((typeof(categories)==="object")&&categories.length > 0) && 
         categories.map((categori,key)=>{
           return(
             <Fragment key={key}>
