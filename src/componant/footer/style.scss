@@ -9,6 +9,7 @@
 }
 .link-list{
   list-style-type: none;
+  margin-top: 15px;
 }
 .link-list-element{
   height: 30px;
@@ -19,14 +20,14 @@
   text-decoration-color: red;
   text-underline-offset: 8px;
 }
-.link-content::before{
-  content: "----";
-  color: transparent;
-}
-.link-content::after{
-  content: "----";
-  color: transparent;
-}
+// .link-content::before{
+//   content: "----";
+//   color: transparent;
+// }
+// .link-content::after{
+//   content: "----";
+//   color: transparent;
+// }
 .link-content{
   text-decoration: none;
 }

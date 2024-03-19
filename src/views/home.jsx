@@ -17,6 +17,7 @@ const Home = ({userIsLoggedIn,token})=>{
       method: 'GET',
     }).then((res)=>{
       if(res?.data?.content?.content?.modules){
+        // console.log('hi')
         localStorage.setItem('homeContent',JSON.stringify(res?.data?.content?.content?.modules))
         setModules(res?.data?.content?.content?.modules)
         // loader.onSetIsLoading(false)

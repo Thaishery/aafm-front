@@ -32,7 +32,7 @@ const Categories = ()=>{
         <meta name="description" content="Retrouvez ici nos nos catégories d'actualitées." />
       </Helmet>
 
-      {categories.length > 0 && 
+      {((typeof(categories)==="array")&&categories.length > 0) && 
         categories.map((categori,key)=>{
           return(
             <Fragment key={key}>

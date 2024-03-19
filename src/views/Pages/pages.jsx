@@ -19,7 +19,7 @@ const Pages = ()=>{
         if(res?.status === 204) setPageFound(false)
         if(res?.status === 200) setPageContent(res?.data?.content)
       })
-  })
+  },[])
   
   return(
     <>
