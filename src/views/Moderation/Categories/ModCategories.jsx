@@ -24,6 +24,7 @@ const ModCategories = ({token})=>{
 
   const handlePageEdit = (e,id)=>{
     e.preventDefault()
+    if(window.confirm('Confirmer la modification de la catégorie?')!==true) return;
     axios({
       url:`${urls.apiUrl}/api/auth/categories/${id}`,
       method:'PUT',
@@ -74,9 +75,9 @@ const ModCategories = ({token})=>{
   }
 
   const handlePageDelete = (id)=>{
-    
+    if(window.confirm('Confirmer la supression de la catégorie?')!==true) return;
     axios({ 
-      url:`${urls.apiUrl}/api/public/categories/${id}`,
+      url:`${urls.apiUrl}/api/auth/categories/${id}`,
       method:'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     }).then((res)=>{
@@ -154,10 +155,10 @@ const ModCategories = ({token})=>{
                 <input type="text" id="name" onChange={(e)=>{handleNameChange(e)}}  value={pageToEditContent.name} />
                 <br />
                 <label htmlFor="description">Description : </label>
-                <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleDescriptionChange(e)}}  value={typeof(pageToEditContent.description)==="object"?JSON.stringify(pageToEditContent.description):pageToEditContent.description} ></textarea>
+                <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleDescriptionChange(e)}}  value={typeof(pageToEditContent.description)==="object"?JSON.stringify(pageToEditContent.description,null,2):pageToEditContent.description} ></textarea>
                 <br />
                 <label htmlFor="content">Contenu : </label>
-                <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleContentChange(e)}}  value={typeof(pageToEditContent.content)==="object"?JSON.stringify(pageToEditContent.content):pageToEditContent.content} ></textarea>
+                <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleContentChange(e)}}  value={typeof(pageToEditContent.content)==="object"?JSON.stringify(pageToEditContent.content,null,2):pageToEditContent.content} ></textarea>
               </>
               }
             </div>

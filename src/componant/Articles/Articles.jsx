@@ -29,8 +29,11 @@ const Articles = ({articles}) =>{
               {article?.description?.content &&
                 <ModuleRender modules={article?.description?.content} />
               }
-              {article?.description?.link &&
+              {article?.description?.link?.cta &&
                 <a className="-cta articleBtn" href={url+""+article.title}>{article.description.link.cta}</a>
+              }
+              {!article?.description?.link?.cta && 
+                <a className="-cta articleBtn" href={url+""+article.title}>Voir l'article</a>
               }
             </article>
           )

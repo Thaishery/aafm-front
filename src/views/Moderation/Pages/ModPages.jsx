@@ -20,6 +20,7 @@ const ModPages = ({token})=>{
 
   const handlePageEdit = (e,id)=>{
     e.preventDefault()
+    if(window.confirm('Confirmer la modification de la page?')!==true) return;
     axios({
       url:`${urls.apiUrl}/api/auth/pages/${id}`,
       method:'POST',
@@ -70,9 +71,9 @@ const ModPages = ({token})=>{
   }
 
   const handlePageDelete = (id)=>{
-    
+    if(window.confirm('Confirmer la supréssion de la page?')!==true) return;
     axios({ 
-      url:`${urls.apiUrl}/api/public/pages/${id}`,
+      url:`${urls.apiUrl}/api/auth/pages/${id}`,
       method:'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     }).then((res)=>{
@@ -80,7 +81,6 @@ const ModPages = ({token})=>{
     }).catch((err)=>{
       console.log(err)
     })
-    // console.log("deleted ")
   }
 
   const handleNameChange = (e)=>{
@@ -155,7 +155,7 @@ const ModPages = ({token})=>{
                 <input type="text" id="description" onChange={(e)=>{handleDescriptionChange(e)}}  value={pageToEditContent.description} />
                 <br />
                 <label htmlFor="content">Contenu : </label>
-                <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleContentChange(e)}}  value={typeof(pageToEditContent.content)==="object"?JSON.stringify(pageToEditContent.content):pageToEditContent.content} ></textarea>
+                <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleContentChange(e)}}  value={typeof(pageToEditContent.content)==="object"?JSON.stringify(pageToEditContent.content,null,2):pageToEditContent.content} ></textarea>
               </>
               }
             </div>
@@ -175,7 +175,7 @@ const ModPages = ({token})=>{
             <input type="text" id="description" onChange={(e)=>{handleDescriptionChangeCreate(e)}}  value={newPageContent.description} />
             <br />
             <label htmlFor="content">Contenu : </label>
-            <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleContentChangeCreate(e)}}  value={typeof(newPageContent.content)==="object"?JSON.stringify(newPageContent.content):newPageContent.content} ></textarea>
+            <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleContentChangeCreate(e)}}  value={typeof(newPageContent.content)==="object"?JSON.stringify(newPageContent.content,null,2):newPageContent.content} ></textarea>
           </form>
         </>
       }

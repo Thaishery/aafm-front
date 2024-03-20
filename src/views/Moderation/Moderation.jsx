@@ -40,7 +40,7 @@ const Moderation = ({userIsLoggedIn,token})=>{
             case 'Pages': 
               return <ModPages key={key} token={token} />
             case 'Articles': 
-              return <ModArticles key={key} />
+              return <ModArticles key={key} token={token}/>
             case 'Catégories': 
               return <ModCategories key={key} token={token}/>
             case 'Activitées': 

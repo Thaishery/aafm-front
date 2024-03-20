@@ -23,7 +23,7 @@ const Cookies = ({setClicked,cliked}) =>{
     <div className="bscbypass-template">
       <div className="bscbypass-inner">
         <p className="bscbypass-messages">
-          En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies pour faciliter votre visite. <a href="/mesDonnees">Politique de confidentialité.</a>
+          En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies pour faciliter votre visite. <a className="link" href="/pages/RGPD">Politique de confidentialité.</a>
         </p>
         <div className="bscbypass-buttons">
           <button onClick={acceptCookies}>Accepter les cookies</button>
