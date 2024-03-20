@@ -27,7 +27,11 @@ const Article = ()=>{
         <FourOFour/>
       }
 
-      {oneArticle &&
+      {(oneArticle && (oneArticle?.is_publish === "false" ||oneArticle?.is_publish === false )) &&
+        <FourOFour/>
+      }
+
+      {(oneArticle && (oneArticle?.is_publish === "true" ||oneArticle?.is_publish === true )) &&
         <article>
           <h2>{oneArticle?.name}</h2>
           <span>Catégorie : <Link to={`/categorie/${oneArticle.categorie.name}/`}>{oneArticle.categorie.name}</Link></span>

@@ -12,7 +12,7 @@ const ModedLayout = () =>{
   })
   const [cliked,setClicked] = useState(false)
   const defaultMenu = [
-    {path:"/",link:"Accueil"},{path:"/moderation", link:"moded"},{path:"/categories", link:"Catégories"},{path:"/activitees",link:"Activitées"},{path:"/monCompte",link:"Mon Compte"},{path:'/Deconnection', link:'Déconnection'}
+    {path:"/",link:"Accueil"},{path:"/moderation", link:"Moderation"},{path:"/categories", link:"Catégories"},{path:"/activitees",link:"Activitées"},{path:"/monCompte",link:"Mon Compte"},{path:'/Deconnection', link:'Déconnection'}
   ]
   const [navElements,setNavElements] = useState(defaultMenu)
   return (

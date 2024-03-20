@@ -6,6 +6,7 @@ const Articles = ({articles}) =>{
     <>
       {articles &&
         articles.map((article, key)=>{
+          if((article?.is_publish === false)||article?.is_publish === "false")return;
           return( 
             <article key={key} className="articles">
               {article?.description?.figure &&

@@ -205,10 +205,10 @@ const ModArticles = ({token})=>{
                 </select>
                 <br />
                 <label htmlFor="content">Contenu : </label>
-                <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleContentChange(e)}}  value={typeof(pageToEditContent.content)==="object"?JSON.stringify(pageToEditContent.content,null,2):pageToEditContent.content} ></textarea>
+                <textarea className="contentEditorArticle" type="textarea" id="content" onChange={(e)=>{handleContentChange(e)}}  value={typeof(pageToEditContent.content)==="object"?JSON.stringify(pageToEditContent.content,null,2):pageToEditContent.content} ></textarea>
                 <br />
                 <label htmlFor="content">Description : </label>
-                <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleDescriptionChange(e)}}  value={typeof(pageToEditContent.description)==="object"?JSON.stringify(pageToEditContent.description,null,2):pageToEditContent.description} ></textarea>
+                <textarea className="contentEditorArticle" type="textarea" id="content" onChange={(e)=>{handleDescriptionChange(e)}}  value={typeof(pageToEditContent.description)==="object"?JSON.stringify(pageToEditContent.description,null,2):pageToEditContent.description} ></textarea>
                 <br />
                 <label htmlFor="is_publish">Publier : </label>
                 <select name="is_publish" id="is_publish" onChange={(e)=>{handleIsPublishChange(e)}}>
@@ -251,10 +251,10 @@ const ModArticles = ({token})=>{
             </select>
             <br />
             <label htmlFor="content">Contenu : </label>
-            <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleContentChangeCreate(e)}}  value={typeof(newPageContent.content)==="object"?JSON.stringify(newPageContent.content,null,2):newPageContent.content} ></textarea>
+            <textarea className="contentEditorArticle" type="textarea" id="content" onChange={(e)=>{handleContentChangeCreate(e)}}  value={typeof(newPageContent.content)==="object"?JSON.stringify(newPageContent.content,null,2):newPageContent.content} ></textarea>
             <br />
             <label htmlFor="content">Description : </label>
-            <textarea className="contentEditor" type="textarea" id="content" onChange={(e)=>{handleDescriptionChangeCreate(e)}}  value={typeof(newPageContent.description)==="object"?JSON.stringify(newPageContent.description,null,2):newPageContent.description} ></textarea>
+            <textarea className="contentEditorArticle" type="textarea" id="content" onChange={(e)=>{handleDescriptionChangeCreate(e)}}  value={typeof(newPageContent.description)==="object"?JSON.stringify(newPageContent.description,null,2):newPageContent.description} ></textarea>
             <br />
             <label htmlFor="is_publish">Publier ? </label>
             <select name="is_publish" id="is_publish" onChange={(e)=>{handleIsPublishChangeCreate(e)}}>
