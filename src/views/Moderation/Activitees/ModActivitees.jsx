@@ -148,7 +148,6 @@ const ModActivitees = ({token})=>{
       method: 'GET',
       headers: { 'Authorization': `Bearer ${token}` }
     }).then((res)=>{
-      console.log(res)
       if(res?.status !== 200) return;
       if(res?.data?.message === "Pas d'activitées trouver.")return(setIsCreate(true))
       setPages(res?.data?.message)
@@ -201,8 +200,18 @@ const ModActivitees = ({token})=>{
             <br />
             <label htmlFor="is_open">Activité ouverte a l'inscription ? </label>
             <select nom="is_open" id="is_open" onChange={(e)=>{handleIsOpenChange(e)}}>
-              <option value="false">Non</option>
-              <option value="true">Oui</option>
+            {(pageToEditContent.is_open === true || pageToEditContent.is_open === "true") && 
+              <>
+                <option value="true">Oui</option>
+                <option value="false">Non</option>
+              </>
+            }
+            {(pageToEditContent.is_open === false || pageToEditContent.is_open === "false") && 
+              <>
+                <option value="false">Non</option>
+                <option value="true">Oui</option>
+              </>
+            }
             </select>
               </>
               }
