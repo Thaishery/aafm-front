@@ -11,7 +11,7 @@ const Activitees = ({userIsLoggedIn ,token}) =>{
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
       }).then((res)=>{
-        // console.log(res)
+        console.log(res)
         setActivitees(res?.data?.message)
       });
     }catch(e){
@@ -58,6 +58,7 @@ const Activitees = ({userIsLoggedIn ,token}) =>{
           method: 'GET',
           headers: { 'Authorization': `Bearer ${token}` }
         }).then((res)=>{
+          console.log(res)
           setActivitees(res?.data?.message)
         });
       }catch(e){
@@ -70,7 +71,7 @@ const Activitees = ({userIsLoggedIn ,token}) =>{
   return(
     <>
       <h2>Retrouver ici la liste des activitées disponibles : </h2>
-      {((typeof(activitees)==="array") && activitees?.length > 0)  && 
+      {((typeof(activitees)==="object") && activitees?.length > 0)  && 
         activitees.map((activite,key)=>{
           if(!activite?.is_open) return(<></>) 
           return(

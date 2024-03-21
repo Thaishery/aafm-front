@@ -54,7 +54,7 @@ const ModActivitees = ({token})=>{
       data:{
         "nom": newPageContent.nom,
         "description": newPageContent.description,
-        "date": Math.ceil(new Date(newPageContent.date+3600)/1000) ,
+        "date": Math.ceil(new Date(newPageContent.date+3600)) ,
         "places":parseInt(newPageContent.places),
         "is_open":(newPageContent.is_open === true ||newPageContent.is_open === "true")? true:false,
         "lieu":newPageContent.lieu,
