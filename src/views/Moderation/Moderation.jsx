@@ -44,9 +44,9 @@ const Moderation = ({userIsLoggedIn,token})=>{
             case 'Catégories': 
               return <ModCategories key={key} token={token}/>
             case 'Activitées': 
-              return <ModActivitees key={key} />
+              return <ModActivitees key={key} token={token}/>
             case 'Membres': 
-              return <ModMembres key={key} />
+              return <ModMembres key={key} token={token}/>
             default : 
               return <></>
           }
