@@ -13,7 +13,7 @@ const LogedLayout = ({userRoles}) =>{
   })
   const [cliked,setClicked] = useState(false)
   const defaultMenu = [
-    {path:"/",link:"Accueil"},{path:"/categories", link:"Catégories"},{path:"/activitees",link:"Activitées"},{path:"/monCompte",link:"Mon Compte"},{path:'/Deconnection', link:'Déconnection'}
+    {path:"/",link:"Accueil"},{path:"/categories", link:"Catégories"},{path:"/activitees",link:"Activités"},{path:"/monCompte",link:"Mon Compte"},{path:'/Deconnection', link:'Déconnection'}
   ]
   const [navElements,setNavElements] = useState(defaultMenu)
   if(userRoles.indexOf('ROLE_MODERATOR') !== -1 || userRoles.indexOf('ROLE_ADMIN') !== -1){

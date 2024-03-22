@@ -218,8 +218,8 @@ const MonCompte = ({userIsLoggedIn ,token})=>{
       {(userInfo?.activitees.length>0)&&
       <>
         <hr></hr>
-        <h2>Mes activitées</h2>
-        <p>Retrouver ici la liste de vos activitées a venirs</p>
+        <h2>Mes Activités</h2>
+        <p>Retrouver ici la liste de vos Activités a venirs</p>
         {userInfo?.activitees?.map((activite,key)=>{
           if(!activite.is_open)return(<Fragment key={key}></Fragment>); // no closed activity shown ... 
           let datetime = new Date(activite.date.date)

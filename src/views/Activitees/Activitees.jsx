@@ -69,7 +69,7 @@ const Activitees = ({userIsLoggedIn ,token}) =>{
 
   return(
     <>
-      <h2>Retrouver ici la liste des activitées disponibles : </h2>
+      <h2>Retrouver ici la liste des activités disponibles : </h2>
       {((typeof(activitees)==="object") && activitees?.length > 0)  && 
         activitees.map((activite,key)=>{
           if(!activite?.is_open) return(<Fragment key={key}></Fragment>) 

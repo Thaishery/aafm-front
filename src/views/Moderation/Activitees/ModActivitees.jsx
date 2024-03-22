@@ -25,7 +25,7 @@ const ModActivitees = ({token})=>{
 
   const handlePageEdit = (e,id)=>{
     e.preventDefault()
-    if(window.confirm('Confirmer la modification de l \'activitées?')!==true) return;
+    if(window.confirm('Confirmer la modification de l \'Activités?')!==true) return;
     axios({
       url:`${urls.apiUrl}/api/auth/activitees/${id}`,
       method:'PUT',
@@ -149,7 +149,7 @@ const ModActivitees = ({token})=>{
       headers: { 'Authorization': `Bearer ${token}` }
     }).then((res)=>{
       if(res?.status !== 200) return;
-      if(res?.data?.message === "Pas d'activitées trouver.")return(setIsCreate(true))
+      if(res?.data?.message === "Pas d'Activités trouver.")return(setIsCreate(true))
       setPages(res?.data?.message)
       setPageToEdit(res?.data.message[0].id)
       setPageToEditContent(res?.data.message[0])
@@ -189,7 +189,7 @@ const ModActivitees = ({token})=>{
             <label htmlFor="description">Description : </label>
             <input type="text" id="description" onChange={(e)=>{handleDescriptionChange(e)}}  value={pageToEditContent.description} />
             <br />
-            <label htmlFor="date">Date de l'activitées : </label>
+            <label htmlFor="date">Date de l'Activités : </label>
             <input type="datetime-local" name="date" id="date" onChange={(e)=>{handleDateChange(e)}} value={new Date((pageToEditContent.date+3600)*1000).toISOString().slice(0,16)}/>
             <br />
             <label htmlFor="nbplaces">Nombre de places : </label>
@@ -222,7 +222,7 @@ const ModActivitees = ({token})=>{
       {isCreate && 
         <>
           <form onSubmit={(e)=>{handleNewPageCreate(e)}}>
-            <button type="button" onClick={()=>{handleBackToEdit()}}>Modifier une activitées existante</button>
+            <button type="button" onClick={()=>{handleBackToEdit()}}>Modifier une Activités existante</button>
             <button >Créer l'activitée</button>
             <br />
             <label htmlFor="nom">Nom : </label>
@@ -231,7 +231,7 @@ const ModActivitees = ({token})=>{
             <label htmlFor="description">Description : </label>
             <input type="text" id="description" onChange={(e)=>{handleDescriptionChangeCreate(e)}}  value={newPageContent.description} />
             <br />
-            <label htmlFor="date">Date de l'activitées : </label>
+            <label htmlFor="date">Date de l'Activités : </label>
             <input type="datetime-local" name="date" id="date" onChange={(e)=>{handleDateChangeCreate(e)}} value={new Date((newPageContent.date+3600)*1000).toISOString().slice(0,16)}/>
             <br />
             <label htmlFor="nbplaces">Nombre de places : </label>
