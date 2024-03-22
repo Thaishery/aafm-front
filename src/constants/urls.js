@@ -8,7 +8,7 @@ const url = {
   // apiUrl: `https://pprod.aafm.gdeb.fr:${port}`
   
   // prod
-  // apiUrl: `https://aafm-grigny.fr:${port}`
+  apiUrl: `https://aafm-grigny.fr:${port}`
   
 };
 
