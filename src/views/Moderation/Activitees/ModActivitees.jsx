@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import axios from "axios"
 import urls from "../../../constants/urls";
 
-// import "./style.scss"
+import "./style.scss"
 
 const ModActivitees = ({token})=>{
   const [pages, setPages]= useState()
   const [pageToEdit, setPageToEdit] = useState(-1)
   const [pageToEditContent, setPageToEditContent] = useState()
   const [isCreate, setIsCreate] = useState(false);
+  const [addParticipantId, setAddParticipantId] = useState(-1);
   const [newPageContent, setNewPageContent] = useState({
     nom:"",
     description:"",
@@ -17,8 +18,53 @@ const ModActivitees = ({token})=>{
     lieu:"",
     date: Math.ceil((Date.now()/1000))
   })
+  const [activityUsers, setActivityUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
 
+  const getActiviteesUsers = async (activiteId)=>{
+    await axios({
+      url:`${urls.apiUrl}/api/auth/activitees_users/${activiteId}`,
+      method:'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    }).then((res)=>{
+      if(res.status !== 200 ) return (setActivityUsers([]));
+      if(res.data.message === "Pas d'activitées trouver.") return (setActivityUsers([]));
+      setActivityUsers(res?.data?.users)
+    }).catch((err)=>{
+    })
+  }
+
+  const handleParticipantAdd = async(e, userId, activiteesId)=>{
+    e.preventDefault();
+    if(window.confirm('Confirmer l\'ajout de l\'utilisateur?')!==true) return;
+    await axios({
+      url:`${urls.apiUrl}/api/auth/activitees/moderer/inscrire/${activiteesId}/${userId}`,
+      method:'POST',
+      headers: { 'Authorization': `Bearer ${token}` }
+    }).then((res)=>{
+      //? dans tous les cas mise a jours des utilisateurs : 
+      getActiviteesUsers(activiteesId)
+      getAllUsers()
+    }).catch((err)=>{
+    })
+  }
+
+  const handleDeleteUser = async (e,userId,activiteesId)=>{
+    e.preventDefault();
+    if(window.confirm('Confirmer la supression de l\'utilisateur?')!==true) return;
+    await axios({
+      url:`${urls.apiUrl}/api/auth/activitees/moderer/desinscrire/${activiteesId}/${userId}`,
+      method:'POST',
+      headers: { 'Authorization': `Bearer ${token}` }
+    }).then((res)=>{
+      //? dans tous les cas mise a jours des utilisateurs : 
+      getActiviteesUsers(activiteesId)
+      getAllUsers()
+    }).catch((err)=>{
+    })
+  }
   const handlePageChange = (pageid)=>{
+    getActiviteesUsers(pageid);
     setPageToEdit(parseInt(pageid))
     setPageToEditContent(pages.filter((page)=>{return page.id===parseInt(pageid)})[0])
   }
@@ -41,7 +87,6 @@ const ModActivitees = ({token})=>{
     }).then((res)=>{
       getAllPages()
     }).catch((err)=>{
-      console.log(err)
     })
   }
 
@@ -90,7 +135,6 @@ const ModActivitees = ({token})=>{
     }).then((res)=>{
       getAllPages()
     }).catch((err)=>{
-      console.log(err)
     })
   }
 
@@ -149,15 +193,29 @@ const ModActivitees = ({token})=>{
       headers: { 'Authorization': `Bearer ${token}` }
     }).then((res)=>{
       if(res?.status !== 200) return;
-      if(res?.data?.message === "Pas d'Activités trouver.")return(setIsCreate(true))
+      if(res?.data?.message === "Pas d'Activités trouver.")return(setIsCreate(true));
       setPages(res?.data?.message)
       setPageToEdit(res?.data.message[0].id)
       setPageToEditContent(res?.data.message[0])
+      getActiviteesUsers(res?.data.message[0].id)
+    })
+  }
+
+  const getAllUsers = async()=>{
+    await axios({
+      url:`${urls.apiUrl}/api/auth/users/getAll`,
+      method: 'GET',
+      headers: { 'Authorization': `Bearer ${token}` }
+    }).then((res)=>{
+      if(res.status !== 200) return(setAllUsers([]));
+      setAllUsers(res?.data)
+      setAddParticipantId(res?.data[0]?.id)
     })
   }
 
   useEffect(()=>{
     getAllPages()
+    getAllUsers()
   },[token])
 
   return(
@@ -216,6 +274,73 @@ const ModActivitees = ({token})=>{
               </>
               }
             </div>
+        </form>
+        <br />
+        <h3>Particiapants : </h3>
+        <br />
+          {
+            (typeof(activityUsers) === "object" && activityUsers.length > 0 )&&
+            <>
+              <ul>
+                {activityUsers.map((user,key)=>{
+                  return(
+                    <li key={key} className="user_list_item">
+                      <div>
+                        {user.email}
+                      </div> 
+                      <div>
+                        {user.firstname}
+                      </div> 
+                      <div>
+                        {user.lastname}
+                      </div> 
+                      <button onClick={(e)=>{handleDeleteUser(e,user.id, pageToEdit)}}>Supprimer l'utilisateur</button>
+                    </li>
+                  )
+                })}
+              </ul>
+              
+            </>
+          }
+        <br />
+        <h3>Ajouter un Participants : </h3>
+        <br />
+        <form onSubmit={(e)=>{handleParticipantAdd(e, addParticipantId,pageToEdit)}}>
+          <label htmlFor="participant">Séléctionner l'utilisatateur : </label>
+          <select name="pariciapant" id="participant" onChange={(e)=>{setAddParticipantId(e.target.value)}}>
+          {!allUsers &&
+            <option value={"-1"}>--</option>
+          }
+          {allUsers &&
+            allUsers.map((user,key)=>{
+              if(
+                (typeof(activityUsers) === "object" && activityUsers.length > 0 )&&
+                activityUsers.find((auser) => auser.id === user.id)
+              )return(
+              <Fragment key={key}>
+                {
+                  (addParticipantId === user.id) &&
+                  <>
+                    {
+                      setAddParticipantId(-1)
+                    }
+                  </>
+                }
+              </Fragment>
+              )
+              return (
+                <option value={user.id} key={key}>
+                  {user.email}
+                  {
+                    addParticipantId === -1 &&
+                      setAddParticipantId(user.id)
+                  }
+                </option>
+              )
+            })
+          }
+          </select>
+          <button>Ajouter</button>
         </form>
       </>
       }
