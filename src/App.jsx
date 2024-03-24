@@ -117,7 +117,7 @@ const App = () => {
           {/* mettre ici les routes protégé par login :  */}
           {userIsLoggedIn &&
             <Route element={<LogedLayout userIsLoggedIn={userIsLoggedIn} token={token} userRoles={userRoles} />}>
-              <Route path='/activitees' element={<Activitees userIsLoggedIn={userIsLoggedIn} token={token} />} />
+              <Route path='/activitees' element={<Activitees userIsLoggedIn={userIsLoggedIn} token={token} userRoles={userRoles} />} />
               <Route path='/monCompte' element={<MonCompte userIsLoggedIn={userIsLoggedIn} token={token} />} />
               <Route path='/Deconnection' element={<Deconnection setUserIsLoggedIn={setUserIsLoggedIn} />} /> 
             </Route>

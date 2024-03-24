@@ -115,9 +115,10 @@ const ModPages = ({token})=>{
     }).then((res)=>{
       // console.log(res)
       if(res?.status !== 200) return;
+      if(res?.data?.pages?.length < 1) return(setIsCreate(true));     
       setPages(res?.data?.pages)
-      setPageToEdit(res?.data.pages[0].id)
-      setPageToEditContent(res?.data.pages[0])
+      setPageToEdit(res?.data?.pages[0].id)
+      setPageToEditContent(res?.data?.pages[0])
     })
   }
 

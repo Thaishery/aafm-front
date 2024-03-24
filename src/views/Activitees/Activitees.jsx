@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react"
 import axios from "axios";
 import urls from "../../constants/urls";
 
-const Activitees = ({userIsLoggedIn ,token}) =>{
+const Activitees = ({userIsLoggedIn ,token, userRoles}) =>{
   const [activitees,setActivitees] = useState([]);
   const getActivitees = async()=>{
     try{
@@ -69,12 +69,14 @@ const Activitees = ({userIsLoggedIn ,token}) =>{
 
   return(
     <>
+    {(userRoles.indexOf('ROLE_MODERATOR') !== -1 || userRoles.indexOf('ROLE_ADMIN') !== -1 ||userRoles.indexOf('ROLE_MEMBER') !== -1 ) &&
+      <>
       <h2>Retrouver ici la liste des activités disponibles : </h2>
       {((typeof(activitees)==="object") && activitees?.length > 0)  && 
         activitees.map((activite,key)=>{
           if(!activite?.is_open) return(<Fragment key={key}></Fragment>) 
           return(
-          <Fragment key={key}>
+            <Fragment key={key}>
             <div className="activitees_container">
               <div>{activite.nom}</div>
               <div>Le : {new Date(activite.date.date).toLocaleString().slice(0,16).replace(" "," à ")}</div>
@@ -100,6 +102,13 @@ const Activitees = ({userIsLoggedIn ,token}) =>{
           )
         })
       }
+      </>
+    }
+    {(userRoles.indexOf('ROLE_MODERATOR') === -1 && userRoles.indexOf('ROLE_ADMIN') === -1 &&userRoles.indexOf('ROLE_MEMBER') === -1 ) &&
+    <>
+      Vos droits sont insufisant pour voir les activitées, merci de faire votre demande dans la partie Mon Compte, Mon adhésion
+    </>
+    }
     </>
   )
 }

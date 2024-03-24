@@ -227,7 +227,7 @@ const ModActivitees = ({token})=>{
           {!pages &&
             <option value={"-1"}>--</option>
           }
-          {pages &&
+          {(pages && typeof(pages)!=="string" && pages?.length > 0 ) &&
             pages.map((page,key)=>{
               return <option value={page.id} key={key}>{page.nom}</option>
             })
@@ -239,7 +239,7 @@ const ModActivitees = ({token})=>{
           <button type="button" onClick={()=>{handlePageCreate()}}>Créer une nouvelle activitée</button>
 
             <div classnom="formFields">
-              {pageToEditContent&&
+              {(pageToEditContent && typeof(pageToEditContent) !=="string")&&
               <>
                 <label htmlFor="nom">Nom : </label>
             <input type="text" id="nom" onChange={(e)=>{handlenomChange(e)}}  value={pageToEditContent.nom} />

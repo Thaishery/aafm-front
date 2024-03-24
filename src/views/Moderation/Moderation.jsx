@@ -29,7 +29,7 @@ const Moderation = ({userIsLoggedIn,token})=>{
               <button className={"mod_button" + (currentTab==="Activitées"?" --active":"")} onClick={()=>{handleMenuClick('Activitées')}}>Activités</button>
             </li>
             <li>
-              <button className={"mod_button" + (currentTab==="Membres"?" --active":"")} onClick={()=>{handleMenuClick('Membres')}}>Membres</button>
+              <button className={"mod_button" + (currentTab==="Membres"?" --active":"")} onClick={()=>{handleMenuClick('Membres')}}>Adhésions</button>
             </li>
           </ul>
         </nav>
