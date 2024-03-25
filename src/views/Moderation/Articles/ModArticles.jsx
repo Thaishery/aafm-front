@@ -30,7 +30,7 @@ const ModArticles = ({token})=>{
 
   const handlePageEdit = (e,id)=>{
     e.preventDefault()
-    console.log(pageToEditContent);
+    // console.log(pageToEditContent);
     axios({
       url:`${urls.apiUrl}/api/auth/articles/${id}`,
       method:'PUT',
@@ -43,6 +43,7 @@ const ModArticles = ({token})=>{
         "is_publish": pageToEditContent.is_publish === "true"? true:false
       }
     }).then((res)=>{
+      console.log(res)
       getAllPages()
     }).catch((err)=>{
       console.log(err)
@@ -51,7 +52,7 @@ const ModArticles = ({token})=>{
 
   const handleNewPageCreate = (e)=>{
     e.preventDefault()
-    console.log(newPageContent);
+    // console.log(newPageContent);
     axios({
       url:`${urls.apiUrl}/api/auth/articles`,
       method:'POST',
@@ -63,6 +64,7 @@ const ModArticles = ({token})=>{
         "is_publish": newPageContent.is_publish === "true"? true:false
       }
     }).then((res)=>{
+      console.log(res)
       getAllPages()
     }).catch((err)=>{
       console.log(err)
