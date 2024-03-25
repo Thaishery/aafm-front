@@ -6,6 +6,7 @@ import FourOFour from "../404";
 import { Helmet } from "react-helmet";
 import SimpleText from "../../componant/SimpleText/SimpleText";
 import Slider from "../../componant/Sliders/slider";
+import ModuleRender from "../../componant/ModuleRender/ModuleRender";
 
 const Pages = ()=>{
   let { pagenom } = useParams();
@@ -33,25 +34,9 @@ const Pages = ()=>{
       </Helmet>
 
       {
-        pageContent?.content?.modules && 
-        pageContent?.content?.modules.map((mod,key)=>{
-          switch(mod.type){
-            case 'simpleText': 
-              return <SimpleText
-                key={key}  
-                articles={mod.module_content}
-              />
-            case 'slider':
-              return <Slider
-              key={key}
-              slides={mod.module_content}
-              />
-            default:
-              break;
-          }
-          return(<></>)
-        })
-      }
+        pageContent?.content?.modules &&
+          <ModuleRender modules={pageContent?.content?.modules} />
+      }         
     </>
   )
 }

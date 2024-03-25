@@ -38,7 +38,7 @@ const Categories = ()=>{
 
       {categorie?.content &&
         <>
-          <h2>{categorie.content.title}</h2>
+          <h2>{categorie.content?.title}</h2>
           <ModuleRender modules={categorie?.content?.modules} />
         </>
       }

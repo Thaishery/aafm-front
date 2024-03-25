@@ -7,6 +7,7 @@ import "./style.scss"
 const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
   const [form, setForm] = useState('login');
 
+  const [loginError, setLoginError] = useState('')
   const [loginEmail, setLoginEmail] = useState('')
   const [loginEmailError, setLoginEmailError] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
@@ -35,6 +36,7 @@ const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
     setRegisterPasswordError('')
     setRegisterPasswordConfirm('')
     setRegisterPasswordConfirmError('')
+    setLoginError('')
     setForm(form)
   }
 
@@ -51,12 +53,17 @@ const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
       headers:{'Content-Type':'application/json'}
     })
     .then((res)=>{
-      if(res?.data?.token !==""|null){
+      if(res?.data?.token !=="" ){
         localStorage.setItem('token', res.data.token)
         setToken(res.data.token)
         setUserIsLoggedIn(true)
         setInterval(refreshToken,7180*1000)
       }
+    })
+    .catch((err)=>{
+      setLoginError('Email ou mot de passe invalide')
+      console.log(err)
+      
     })
   }
   
@@ -164,8 +171,11 @@ const Auth = ({userIsLoggedIn,setUserIsLoggedIn,setToken, token}) =>{
       </div>
 
       {form === "login"&&
-        <form onSubmit={handleLoginSubmit} className="form">
-          {//Gestion erreurs login . (credentials invalides)
+        <form onSubmit={handleLoginSubmit} className={loginError?"form input--error":"form"}>
+          {loginError &&
+              <pre className="error_message">
+              {loginError}
+            </pre>
           }
           <div className={"input " + (loginEmailError !== "" ? "input--error" : "")}>
           {(loginEmailError !== "")&&
