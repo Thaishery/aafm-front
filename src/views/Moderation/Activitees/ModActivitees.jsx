@@ -79,7 +79,7 @@ const ModActivitees = ({token})=>{
       data:{
         "nom": pageToEditContent.nom,
         "description": pageToEditContent.description,
-        "date": Math.ceil(new Date(pageToEditContent.date+3600)),
+        "date": Math.ceil(new Date(pageToEditContent.date)),
         "places":parseInt(pageToEditContent.places),
         "is_open":(pageToEditContent.is_open === true ||pageToEditContent.is_open === "true")? true:false,
         "lieu":pageToEditContent.lieu
@@ -99,7 +99,7 @@ const ModActivitees = ({token})=>{
       data:{
         "nom": newPageContent.nom,
         "description": newPageContent.description,
-        "date": Math.ceil(new Date(newPageContent.date+3600)) ,
+        "date": Math.ceil(new Date(newPageContent.date)),
         "places":parseInt(newPageContent.places),
         "is_open":(newPageContent.is_open === true ||newPageContent.is_open === "true")? true:false,
         "lieu":newPageContent.lieu,

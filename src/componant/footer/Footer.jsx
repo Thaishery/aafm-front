@@ -49,7 +49,7 @@ const Footer = () =>{
         </div>
         <div className='copyright-separator'></div>
         <div className="copyright-right">
-          <span>Réaliser par : <a className='copyright-link' rel="noreferrer" href="http://gdeb.fr" target="_blank">Guillaume DEBUCQUET</a></span>
+          <span>Réalisé par : <a className='copyright-link' rel="noreferrer" href="http://gdeb.fr" target="_blank">Guillaume DEBUCQUET</a></span>
         </div>
       </div>
     </div>
